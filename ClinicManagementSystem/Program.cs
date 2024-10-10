@@ -1,3 +1,9 @@
+using ClinicManagementSystem.Models;
+using ClinicManagementSystem.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace ClinicManagementSystem
 {
     public class Program
@@ -8,6 +14,9 @@ namespace ClinicManagementSystem
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             var app = builder.Build();
 
@@ -19,7 +28,6 @@ namespace ClinicManagementSystem
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapControllerRoute(

@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\ClinicManagementSystem\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|f:\\clinicmanagementsystem\\clinicmanagementsystem\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|solutionrelative:clinicmanagementsystem\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|f:\\clinicmanagementsystem\\clinicmanagementsystem\\views\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|solutionrelative:clinicmanagementsystem\\views\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|f:\\clinicmanagementsystem\\clinicmanagementsystem\\views\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|solutionrelative:clinicmanagementsystem\\views\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|f:\\clinicmanagementsystem\\clinicmanagementsystem\\views\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|solutionrelative:clinicmanagementsystem\\views\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|f:\\clinicmanagementsystem\\clinicmanagementsystem\\views\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{868892E6-E905-4004-B85F-CD6D1C75AC72}|ClinicManagementSystem\\ClinicManagementSystem.csproj|solutionrelative:clinicmanagementsystem\\views\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Index.cshtml",
+              "RelativeDocumentMoniker": "ClinicManagementSystem\\Views\\Doctors\\Index.cshtml",
+              "ToolTip": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Index.cshtml",
+              "RelativeToolTip": "ClinicManagementSystem\\Views\\Doctors\\Index.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-06T15:33:27.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ClinicManagementSystem\\Views\\Doctors\\Edit.cshtml",
+              "ToolTip": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Edit.cshtml",
+              "RelativeToolTip": "ClinicManagementSystem\\Views\\Doctors\\Edit.cshtml",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAE4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-06T15:29:35.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ClinicManagementSystem\\Views\\Doctors\\Delete.cshtml",
+              "ToolTip": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Delete.cshtml",
+              "RelativeToolTip": "ClinicManagementSystem\\Views\\Doctors\\Delete.cshtml",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-06T15:29:34.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Create.cshtml",
+              "RelativeDocumentMoniker": "ClinicManagementSystem\\Views\\Doctors\\Create.cshtml",
+              "ToolTip": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Views\\Doctors\\Create.cshtml",
+              "RelativeToolTip": "ClinicManagementSystem\\Views\\Doctors\\Create.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAowE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-06T15:29:33.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DoctorsController.cs",
+              "DocumentMoniker": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Controllers\\DoctorsController.cs",
+              "RelativeDocumentMoniker": "ClinicManagementSystem\\Controllers\\DoctorsController.cs",
+              "ToolTip": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\Controllers\\DoctorsController.cs",
+              "RelativeToolTip": "ClinicManagementSystem\\Controllers\\DoctorsController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T15:29:27.231Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
