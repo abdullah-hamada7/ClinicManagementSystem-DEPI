@@ -1,0 +1,22 @@
+﻿@model ClinicManagementSystem.Models.Appointment
+
+<h2>Appointment Details</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Patient ID</dt>
+        <dd class="col-sm-10">@Model.PatientID</dd>
+
+        <dt class="col-sm-2">Doctor ID</dt>
+        <dd class="col-sm-10">@Model.DoctorID</dd>
+
+        <dt class="col-sm-2">Appointment Date</dt>
+        <dd class="col-sm-10">@Model.AppointmentDate.ToString("g")</dd>
+
+        <dt class="col-sm-2">Reason</dt>
+        <dd class="col-sm-10">@Model.Reason</dd>
+    </dl>
+</div>
+
+<a href="@Url.Action("Edit", new { id = Model.AppointmentID })" class="btn btn-warning">Edit</a>
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
