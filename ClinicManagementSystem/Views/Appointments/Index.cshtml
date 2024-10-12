@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ClinicManagementSystem.Models.Appointment>
+
+<h2>Appointments</h2>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New Appointment</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Appointment Date</th>
+            <th>Reason</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.PatientID</td>
+                <td>@appointment.DoctorID</td>
+                <td>@appointment.AppointmentDate.ToString("g")</td>
+                <td>@appointment.Reason</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = appointment.AppointmentID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Details", new { id = appointment.AppointmentID })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = appointment.AppointmentID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
