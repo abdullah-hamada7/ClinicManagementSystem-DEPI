@@ -15,6 +15,7 @@ namespace ClinicManagementSystem.Models
         public string Manufacturer { get; set; }
 
         public ICollection<Prescription> Prescriptions { get; set; }
+        public byte[] ImageData { get; set; }
     }
 
 

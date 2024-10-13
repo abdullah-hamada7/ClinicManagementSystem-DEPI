@@ -7718,24 +7718,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ahmed Nour\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\am250\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahmed Nour\\Source\\Repos\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+      "projectUniqueName": "D:\\pro\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
       "projectName": "ClinicManagementSystem",
-      "projectPath": "C:\\Users\\Ahmed Nour\\Source\\Repos\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
-      "packagesPath": "C:\\Users\\Ahmed Nour\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahmed Nour\\Source\\Repos\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\obj\\",
+      "projectPath": "D:\\pro\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+      "packagesPath": "C:\\Users\\am250\\.nuget\\packages\\",
+      "outputPath": "D:\\pro\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Ahmed Nour\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\am250\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7805,7 +7800,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

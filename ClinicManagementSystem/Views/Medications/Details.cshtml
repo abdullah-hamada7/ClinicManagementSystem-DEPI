@@ -1,0 +1,54 @@
+﻿@model ClinicManagementSystem.DTOs.MedicationDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MedicationDTO</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MedicationID)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.MedicationID)
+        </dt>
+
+        <dd class = "col-sm-2">
+            @Html.DisplayFor(model => model.MedicationName)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MedicationName)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.DosageForm)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DosageForm)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+      
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

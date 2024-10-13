@@ -15,6 +15,7 @@ namespace ClinicManagementSystem.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        #region Index 
         public async Task<IActionResult> Index()
         {
             var doctors = await _unitOfWork.Doctors.GetAll();
@@ -22,6 +23,9 @@ namespace ClinicManagementSystem.Controllers
             return View(doctors);
         }
 
+        #endregion
+
+        #region Detalis
         public async Task<IActionResult> Details(int id)
         {
             var doctor = await _unitOfWork.Doctors.GetById(id);
@@ -31,7 +35,9 @@ namespace ClinicManagementSystem.Controllers
             }
             return View(doctor);
         }
+        #endregion
 
+        #region Create 
         public IActionResult Create()
         {
             return View();
@@ -70,7 +76,9 @@ namespace ClinicManagementSystem.Controllers
             }
             return View(doctorDto);
         }
+        #endregion
 
+        #region Edit 
         public async Task<IActionResult> Edit(int id)
         {
             var doctor = await _unitOfWork.Doctors.GetById(id);
@@ -150,7 +158,9 @@ namespace ClinicManagementSystem.Controllers
             }
             return View(doctorDto);
         }
+        #endregion
 
+        #region Delete
         public async Task<IActionResult> Delete(int id)
         {
             var doctor = await _unitOfWork.Doctors.GetById(id);
@@ -171,6 +181,7 @@ namespace ClinicManagementSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        #endregion  
         private async Task<bool> DoctorExists(int id)
         {
             var doctor = await _unitOfWork.Doctors.GetById(id);

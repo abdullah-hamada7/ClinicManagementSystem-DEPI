@@ -28,9 +28,9 @@
                 <td>@record.VisitDate.ToShortDateString()</td>
                 <td>@record.Diagnosis</td>
                 <td>
-                    <a href="@Url.Action("Details", new { id = record.RecordID })">Details</a> |
-                    <a href="@Url.Action("Edit", new { id = record.RecordID })">Edit</a> |
-                    <a href="@Url.Action("Delete", new { id = record.RecordID })">Delete</a>
+                    <a href="@Url.Action("Details", new { id = record.ID })">Details</a> |
+                    <a href="@Url.Action("Edit", new { id = record.ID })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = record.ID })">Delete</a>
                 </td>
             </tr>
         }
