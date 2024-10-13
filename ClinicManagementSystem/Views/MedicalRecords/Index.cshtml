@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ClinicManagementSystem.Models.MedicalRecord>
+
+<h2>Medical Records</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Visit Date</th>
+            <th>Diagnosis</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.PatientID</td>
+                <td>@record.DoctorID</td>
+                <td>@record.VisitDate.ToShortDateString()</td>
+                <td>@record.Diagnosis</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = record.RecordID })">Details</a> |
+                    <a href="@Url.Action("Edit", new { id = record.RecordID })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = record.RecordID })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New Record</a>
