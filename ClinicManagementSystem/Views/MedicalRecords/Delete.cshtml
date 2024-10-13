@@ -5,7 +5,7 @@
 <p>Are you sure you want to delete this medical record for Patient ID: @Model.PatientID?</p>
 
 <form asp-action="DeleteConfirmed" method="post">
-    <input type="hidden" asp-for="RecordID" />
+    <input type="hidden" asp-for="ID" />
     <button type="submit" class="btn btn-danger">Delete</button>
     <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
 </form>
