@@ -46,5 +46,10 @@ namespace ClinicManagementSystem.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public Task Update(Patient patient)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

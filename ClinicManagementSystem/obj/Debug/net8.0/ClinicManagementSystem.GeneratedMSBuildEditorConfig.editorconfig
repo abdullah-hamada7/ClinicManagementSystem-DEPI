@@ -17,51 +17,91 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ClinicManagementSystem
 build_property.RootNamespace = ClinicManagementSystem
-build_property.ProjectDir = F:\ClinicManagementSystem\ClinicManagementSystem\
+build_property.ProjectDir = C:\Users\youss\OneDrive\Desktop\New folder\ClinicManagementSystem-DEPI\ClinicManagementSystem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\ClinicManagementSystem\ClinicManagementSystem
+build_property.MSBuildProjectDirectory = C:\Users\youss\OneDrive\Desktop\New folder\ClinicManagementSystem-DEPI\ClinicManagementSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Create.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Departments/create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcY3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Departments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Departments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Departments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Departments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Delete.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Details.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Edit.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Index.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/Error.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Patients/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Patients/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Patients/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Patients/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Patients/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/_ViewImports.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/_ViewStart.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/_Layout.cshtml]
+[C:/Users/youss/OneDrive/Desktop/New folder/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dlc30rk6bv

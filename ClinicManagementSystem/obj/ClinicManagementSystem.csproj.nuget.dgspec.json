@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj": {}
+    "C:\\Users\\youss\\OneDrive\\Desktop\\New folder\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj": {}
   },
   "projects": {
-    "F:\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj": {
+    "C:\\Users\\youss\\OneDrive\\Desktop\\New folder\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\youss\\OneDrive\\Desktop\\New folder\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
         "projectName": "ClinicManagementSystem",
-        "projectPath": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\chief\\.nuget\\packages\\",
-        "outputPath": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\obj\\",
+        "projectPath": "C:\\Users\\youss\\OneDrive\\Desktop\\New folder\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\youss\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\youss\\OneDrive\\Desktop\\New folder\\ClinicManagementSystem-DEPI\\ClinicManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\chief\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\youss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,21 +52,21 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             }
           },
           "imports": [
@@ -84,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

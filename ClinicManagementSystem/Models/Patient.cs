@@ -29,6 +29,8 @@ namespace ClinicManagementSystem.Models
         public ICollection<Appointment> Appointments { get; set; }
         public ICollection<MedicalRecord> MedicalRecords { get; set; }
         public byte[] ImageData { get; set; }
+
+       
     }
 
 }
