@@ -504,3 +504,14 @@ C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSys
 C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ClinicManagementSystem.pdb
 C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ClinicManagementSystem.genruntimeconfig.cache
 C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ref\ClinicManagementSystem.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+F:\ClinicManagementSystem\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
