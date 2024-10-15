@@ -66,6 +66,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/MedicalRecords/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,44 +94,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medications/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medication/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medications/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvbnNcRGVsZXRlLmNzaHRtbA==
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medication/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvblxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medications/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvbnNcRGV0YWlscy5jc2h0bWw=
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medication/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvblxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medications/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvbnNcRWRpdC5jc2h0bWw=
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medication/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvblxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medications/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvbnNcSW5kZXguY3NodG1s
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Medication/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhdGlvblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prrscription/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJyc2NyaXB0aW9uXENyZWF0ZS5jc2h0bWw=
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prescription/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prrscription/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJyc2NyaXB0aW9uXERlbGV0ZS5jc2h0bWw=
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prescription/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prrscription/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJyc2NyaXB0aW9uXERldGFpbHMuY3NodG1s
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prescription/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prrscription/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJyc2NyaXB0aW9uXEVkaXQuY3NodG1s
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prescription/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prrscription/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJyc2NyaXB0aW9uXEluZGV4LmNzaHRtbA==
+[D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Prescription/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/pro/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/Error.cshtml]

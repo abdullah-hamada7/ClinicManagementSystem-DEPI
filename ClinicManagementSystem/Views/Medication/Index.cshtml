@@ -13,7 +13,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Photo</th>
+
                 <th>@Html.DisplayNameFor(model => model.MedicationName)</th>
                 <th>@Html.DisplayNameFor(model => model.Description)</th>
                 <th>@Html.DisplayNameFor(model => model.DosageForm)</th>
@@ -25,17 +25,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @if (item.ImageData != null)
-                        {
-                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageData)"
-                                 alt="Medication Photo" style="max-width: 50px; max-height: 50px;" />
-                        }
-                    </td>
-                    <th>@Html.DisplayNameFor(model => model.MedicationName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.DosageForm)</th>
-                    <th>@Html.DisplayNameFor(model => model.Manufacturer)</th>
+
+                    <th>@Html.DisplayFor(modelitem => item.MedicationName)</th>
+                    <th>@Html.DisplayFor(modelitem => item.Description)</th>
+                    <th>@Html.DisplayFor(modelitem => item.DosageForm)</th>
+                    <th>@Html.DisplayFor(modelitem => item.Manufacturer)</th>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.MedicationID" class="btn btn-warning btn-sm">Edit</a>
                         <a asp-action="Details" asp-route-id="@item.MedicationID" class="btn btn-info btn-sm">Details</a>
@@ -46,3 +40,4 @@
         </tbody>
     </table>
 </div>
+

@@ -1,55 +1,54 @@
 ﻿@model ClinicManagementSystem.DTOs.MedicationDTO
 
 @{
-    ViewData["Title"] = "Create Medication";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create Medication</h1>
+<h1>Edit</h1>
 
+<h4>Medication</h4>
+<hr />
 <div class="row">
-    <div class="col-md-8">
-        <form asp-action="Create" enctype="multipart/form-data">
+    <div class="col-md-4">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-          
-            
+
+         
+
             <div class="form-group mb-3">
                 <label asp-for="MedicationName" class="control-label"></label>
                 <input asp-for="MedicationName" class="form-control" />
                 <span asp-validation-for="MedicationName" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group mb-3">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group mb-3">
                 <label asp-for="DosageForm" class="control-label"></label>
                 <input asp-for="DosageForm" class="form-control" />
                 <span asp-validation-for="DosageForm" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group mb-3">
                 <label asp-for="Manufacturer" class="control-label"></label>
-                <input asp-for="Manufacturer" class="form-control" type="email" />
+                <input asp-for="Manufacturer" class="form-control"  />
                 <span asp-validation-for="Manufacturer" class="text-danger"></span>
             </div>
+
             
-            <div class="form-group mb-3">
-                <label asp-for="ImageFile" class="control-label">Profile Photo</label>
-                <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" /> |
                 <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
             </div>
         </form>
     </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

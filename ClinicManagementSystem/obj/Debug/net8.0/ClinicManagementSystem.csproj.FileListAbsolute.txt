@@ -757,3 +757,5 @@ D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\scope
 D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ClinicMa.331FCBA1.Up2Date
 D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ClinicManagementSystem.genruntimeconfig.cache
 D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\obj\Debug\net8.0\ref\ClinicManagementSystem.dll
+D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\pro\ClinicManagementSystem-DEPI\ClinicManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

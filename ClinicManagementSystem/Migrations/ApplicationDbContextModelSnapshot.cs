@@ -203,10 +203,6 @@ namespace ClinicManagementSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<byte[]>("ImageData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("Manufacturer")
                         .IsRequired()
                         .HasMaxLength(100)

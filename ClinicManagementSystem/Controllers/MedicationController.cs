@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Controllers
 {
-    public class Medications_Controller : Controller
+    public class MedicationController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public Medications_Controller(IUnitOfWork unitOfWork)
+
+        public MedicationController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -17,11 +18,9 @@ namespace ClinicManagementSystem.Controllers
         #region Index 
         public async Task<IActionResult> Index()
         {
-            var Medication = await _unitOfWork.Medications.GetAll();
-
-            return View(Medication);
+            var medications = await _unitOfWork.Medications.GetAll(); // Ensure you await the async method
+            return View(medications); // Pass the result to the View
         }
-
         #endregion
 
         #region Detalis
@@ -57,14 +56,7 @@ namespace ClinicManagementSystem.Controllers
                     Manufacturer = medicationdto.Manufacturer,
                 };
 
-                if (medicationdto.ImageFile != null)
-                {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        await medicationdto.ImageFile.CopyToAsync(memoryStream);
-                        medication.ImageData = memoryStream.ToArray();
-                    }
-                }
+             
 
                 await _unitOfWork.Medications.Add(medication);
                 TempData["SuccessMessage"] = "Medication created successfully!";
@@ -120,14 +112,7 @@ namespace ClinicManagementSystem.Controllers
                     medication.Manufacturer = medicationdto.Manufacturer;
                    
 
-                    if (medicationdto.ImageFile != null)
-                    {
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await medicationdto.ImageFile.CopyToAsync(memoryStream);
-                            medication.ImageData = memoryStream.ToArray();
-                        }
-                    }
+                  
 
                     await _unitOfWork.Medications.Update(medication);
                     TempData["SuccessMessage"] = "Medication updated successfully!";
