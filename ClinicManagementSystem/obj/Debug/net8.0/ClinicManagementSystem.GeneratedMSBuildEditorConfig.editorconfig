@@ -17,51 +17,91 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ClinicManagementSystem
 build_property.RootNamespace = ClinicManagementSystem
-build_property.ProjectDir = C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSystem\
+build_property.ProjectDir = F:\ClinicManagementSystem\ClinicManagementSystem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Ahmed Nour\Source\Repos\ClinicManagementSystem-DEPI\ClinicManagementSystem
+build_property.MSBuildProjectDirectory = F:\ClinicManagementSystem\ClinicManagementSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Create.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Appointments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Appointments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Appointments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Appointments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Appointments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Delete.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Details.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Edit.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Doctors/Index.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Doctors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/Error.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/MedicalRecords/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/MedicalRecords/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/MedicalRecords/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/MedicalRecords/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/MedicalRecords/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlY29yZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/_ViewImports.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/_ViewStart.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahmed Nour/Source/Repos/ClinicManagementSystem-DEPI/ClinicManagementSystem/Views/Shared/_Layout.cshtml]
+[F:/ClinicManagementSystem/ClinicManagementSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dlc30rk6bv

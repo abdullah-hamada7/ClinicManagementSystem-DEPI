@@ -73,7 +73,7 @@ namespace ClinicManagementSystem.Controllers
 
             var medicalRecordDto = new MedicalRecordDTO
             {
-                RecordID = medicalRecord.RecordID,
+                RecordID = medicalRecord.ID,
                 PatientID = medicalRecord.PatientID,
                 DoctorID = medicalRecord.DoctorID,
                 VisitDate = medicalRecord.VisitDate,
