@@ -1,0 +1,30 @@
+﻿@model ClinicManagementSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h2>Department Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Department Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DepartmentName
+        </dd>
+        <dt class="col-sm-2">
+            Location
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Location
+        </dd>
+    </dl>
+</div>
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Index")">Back to List</a>
+</p>
+

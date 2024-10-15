@@ -12,7 +12,7 @@ namespace ClinicManagementSystem.Models
         [Required]
         public DateTime DateOfBirth { get; set; }
         [Required]
-        public char Gender { get; set; }
+        public string Gender { get; set; }
         [MaxLength(15)]
         public string PhoneNumber { get; set; }
         [MaxLength(100)]

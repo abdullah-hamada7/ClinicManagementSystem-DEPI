@@ -1,6 +1,7 @@
 ﻿using ClinicManagementSystem.DTOs;
 using ClinicManagementSystem.Models;
 using ClinicManagementSystem.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,11 @@ namespace ClinicManagementSystem.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize(Roles = "Doctor")]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
         public async Task<IActionResult> Index()
         {
             var doctors = await _unitOfWork.Doctors.GetAll();
