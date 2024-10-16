@@ -3,28 +3,29 @@ using ClinicManagementSystem.Models;
 using ClinicManagementSystem.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Controllers
 {
-    public class DoctorsController : Controller
+    [Authorize(Roles = "Doctor")]
+    public class DoctorController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DoctorsController(IUnitOfWork unitOfWork)
+        public DoctorController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        [Authorize(Roles = "Doctor")]
         public IActionResult Dashboard()
         {
             return View();
         }
+
         public async Task<IActionResult> Index()
         {
             var doctors = await _unitOfWork.Doctors.GetAll();
-
             return View(doctors);
         }
 
@@ -38,8 +39,11 @@ namespace ClinicManagementSystem.Controllers
             return View(doctor);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var departments = await _unitOfWork.Departments.GetAll();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
+
             return View();
         }
 
@@ -74,6 +78,11 @@ namespace ClinicManagementSystem.Controllers
                 TempData["SuccessMessage"] = "Doctor created successfully!";
                 return RedirectToAction(nameof(Index));
             }
+
+            // Re-fetch departments to populate the select list again if the model state is invalid
+            var departments = await _unitOfWork.Departments.GetAll();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "Name");
+
             return View(doctorDto);
         }
 
@@ -97,6 +106,10 @@ namespace ClinicManagementSystem.Controllers
                 HireDate = doctor.HireDate ?? DateTime.Now,
                 DepartmentID = doctor.DepartmentID
             };
+
+            // Fetch departments for the select list
+            var departments = await _unitOfWork.Departments.GetAll();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "Name");
 
             return View(doctorDto);
         }
@@ -139,7 +152,7 @@ namespace ClinicManagementSystem.Controllers
                     }
 
                     await _unitOfWork.Doctors.Update(doctor);
-                    TempData["SuccessMessage"] = "doctor updated successfully!";
+                    TempData["SuccessMessage"] = "Doctor updated successfully!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -154,6 +167,11 @@ namespace ClinicManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Re-fetch departments to populate the select list again if the model state is invalid
+            var departments = await _unitOfWork.Departments.GetAll();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "Name");
+
             return View(doctorDto);
         }
 
@@ -173,7 +191,7 @@ namespace ClinicManagementSystem.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _unitOfWork.Doctors.Delete(id);
-            TempData["SuccessMessage"] = "doctor deleted successfully!";
+            TempData["SuccessMessage"] = "Doctor deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

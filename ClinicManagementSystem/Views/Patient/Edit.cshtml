@@ -1,4 +1,4 @@
-﻿@model ClinicManagementSystem.Models.Patient
+﻿@model ClinicManagementSystem.DTOs.PatientDTO
 
 @{
     ViewBag.Title = "Edit Patient";
@@ -67,4 +67,8 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

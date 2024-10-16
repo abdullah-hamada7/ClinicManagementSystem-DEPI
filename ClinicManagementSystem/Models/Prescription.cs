@@ -20,6 +20,8 @@ namespace ClinicManagementSystem.Models
         public string Frequency { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public byte[] ImageData { get; set; }
+
     }
 
 }

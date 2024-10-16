@@ -18,6 +18,7 @@ namespace ClinicManagementSystem.Models
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Bills> Bills { get; set; }
         public DbSet<Staff> Staffs { get; set; }
+                public DbSet<IdentityUser> IdentityUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

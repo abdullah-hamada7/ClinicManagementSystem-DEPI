@@ -50,7 +50,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("PatientID");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Bills", b =>
@@ -87,7 +87,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("PatientID");
 
-                    b.ToTable("Bills");
+                    b.ToTable("Bills", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Department", b =>
@@ -110,7 +110,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasKey("DepartmentID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Doctor", b =>
@@ -165,7 +165,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("DepartmentID");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.MedicalRecord", b =>
@@ -219,7 +219,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("PatientID");
 
-                    b.ToTable("MedicalRecords");
+                    b.ToTable("MedicalRecords", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Medication", b =>
@@ -240,6 +240,10 @@ namespace ClinicManagementSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Manufacturer")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -252,7 +256,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasKey("MedicationID");
 
-                    b.ToTable("Medications");
+                    b.ToTable("Medications", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Patient", b =>
@@ -298,7 +302,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ImageData")
                         .IsRequired()
@@ -316,7 +320,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasKey("PatientID");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Prescription", b =>
@@ -343,6 +347,10 @@ namespace ClinicManagementSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int>("MedicationID")
                         .HasColumnType("int");
 
@@ -360,7 +368,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("PatientID");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Prescriptions", (string)null);
                 });
 
             modelBuilder.Entity("ClinicManagementSystem.Models.Staff", b =>
@@ -406,7 +414,7 @@ namespace ClinicManagementSystem.Migrations
 
                     b.HasIndex("DepartmentID");
 
-                    b.ToTable("Staffs");
+                    b.ToTable("Staffs", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -13,6 +13,7 @@ namespace ClinicManagementSystem.Models
         public string DosageForm { get; set; }
         [MaxLength(100)]
         public string Manufacturer { get; set; }
+        public byte[] ImageData { get; set; }
 
         public ICollection<Prescription> Prescriptions { get; set; }
     }

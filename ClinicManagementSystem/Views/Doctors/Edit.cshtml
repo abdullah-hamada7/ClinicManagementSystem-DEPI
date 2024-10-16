@@ -52,11 +52,15 @@
                 <input asp-for="HireDate" class="form-control" />
                 <span asp-validation-for="HireDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="DepartmentID" class="control-label"></label>
-                <input asp-for="DepartmentID" class="form-control" />
+                <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.Departments">
+                    <option value="">Select a department</option>
+                </select>
                 <span asp-validation-for="DepartmentID" class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
                 <label asp-for="ImageData" class="control-label"></label>
                 <input asp-for="ImageData" class="form-control" />

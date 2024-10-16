@@ -13,6 +13,6 @@
         public string BloodType { get; set; }
         public string EmergencyContactName { get; set; }
         public string EmergencyContactPhone { get; set; }
-        public IFormFile ImageFile { get; set; }  // Image for file upload
+        public IFormFile ImageFile { get; set; }
     }
 }

@@ -7,5 +7,7 @@
         public string Description { get; set; }
         public string DosageForm { get; set; }
         public string Manufacturer { get; set; }
+        public IFormFile ImageFile { get; set; }
+
     }
 }

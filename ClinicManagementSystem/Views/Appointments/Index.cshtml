@@ -1,16 +1,30 @@
 ﻿@model IEnumerable<ClinicManagementSystem.Models.Appointment>
 
-<h2>Appointments</h2>
+@{
+    ViewData["Title"] = "Appointments";
+}
 
-<a href="@Url.Action("Create")" class="btn btn-primary">Create New Appointment</a>
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Appointment</a>
+</p>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Patient ID</th>
-            <th>Doctor ID</th>
-            <th>Appointment Date</th>
-            <th>Reason</th>
+            <th>@Html.DisplayNameFor(model => model.First().AppointmentID)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Patient.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Doctor.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().AppointmentDate)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Reason)</th>
             <th></th>
         </tr>
     </thead>
@@ -18,14 +32,15 @@
         @foreach (var appointment in Model)
         {
             <tr>
-                <td>@appointment.PatientID</td>
-                <td>@appointment.DoctorID</td>
-                <td>@appointment.AppointmentDate.ToString("g")</td>
+                <td>@appointment.AppointmentID</td>
+                <td>@appointment.Patient.FirstName</td>
+                <td>@appointment.Doctor.FirstName</td>
+                <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
                 <td>@appointment.Reason</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = appointment.AppointmentID })" class="btn btn-warning">Edit</a>
-                    <a href="@Url.Action("Details", new { id = appointment.AppointmentID })" class="btn btn-info">Details</a>
-                    <a href="@Url.Action("Delete", new { id = appointment.AppointmentID })" class="btn btn-danger">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@appointment.AppointmentID" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@appointment.AppointmentID" class="btn btn-danger">Delete</a>
+                    <a asp-action="Details" asp-route-id="@appointment.AppointmentID" class="btn btn-info">Details</a>
                 </td>
             </tr>
         }

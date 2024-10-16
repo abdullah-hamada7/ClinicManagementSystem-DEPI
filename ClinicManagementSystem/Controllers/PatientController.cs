@@ -3,8 +3,9 @@ using ClinicManagementSystem.Models;
 using ClinicManagementSystem.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Numerics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Controllers
 {
@@ -16,11 +17,15 @@ namespace ClinicManagementSystem.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
+        // GET: Patient
         public async Task<IActionResult> Index()
         {
             var patients = await _unitOfWork.Patients.GetAll();
             return View(patients);
         }
+
+        // GET: Patient/Details/5
         public async Task<IActionResult> Details(int id)
         {
             var patient = await _unitOfWork.Patients.GetById(id);
@@ -32,105 +37,17 @@ namespace ClinicManagementSystem.Controllers
 
             return View(patient);
         }
+
+        // GET: Patient/Create
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
 
+        // POST: Patient/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Patient patient)
-        {
-            if (ModelState.IsValid)
-            {
-                await _unitOfWork.Patients.Add(patient);
-
-                return RedirectToAction("Index");
-            }
-
-            return View(patient);
-        }
-
-        public async Task<IActionResult> Edit(int id)
-        {
-            var patient = await _unitOfWork.Patients.GetById(id);
-
-            if (patient == null)
-            {
-                return NotFound();
-            }
-
-            return View(patient);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Patient patient)
-        {
-            if (ModelState.IsValid)
-            {
-                await _unitOfWork.Patients.Update(patient);
-
-                return RedirectToAction("Index");
-            }
-
-            return View(patient);
-        }
-        public async Task<IActionResult> Edit(int id, PatientDTO patientDto)
-        {
-            if (id != patientDto.PatientID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var patient = await _unitOfWork.Patients.GetById(id);
-                    if (patient == null)
-                    {
-                        return NotFound();
-                    }
-
-                    patient.FirstName = patientDto.FirstName;
-                    patient.LastName = patientDto.LastName;
-                    patient.DateOfBirth = patientDto.DateOfBirth;
-                    patient.Gender = patientDto.Gender;
-                    patient.PhoneNumber = patientDto.PhoneNumber;
-                    patient.Email = patientDto.Email;
-                    patient.BloodType = patientDto.BloodType;
-                    patient.EmergencyContactName = patientDto.EmergencyContactName;
-                    patient.EmergencyContactPhone = patientDto.EmergencyContactPhone;
-
-                    if (patientDto.ImageFile != null)
-                    {
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await patientDto.ImageFile.CopyToAsync(memoryStream);
-                            patient.ImageData = memoryStream.ToArray();
-                        }
-                    }
-
-                    await _unitOfWork.Patients.Update(patient);
-                    TempData["SuccessMessage"] = "doctor updated successfully!";
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!await PatientExists(patientDto.PatientID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(patientDto);
-        }
         public async Task<IActionResult> Create(PatientDTO patientDto)
         {
             if (ModelState.IsValid)
@@ -148,26 +65,131 @@ namespace ClinicManagementSystem.Controllers
                     EmergencyContactPhone = patientDto.EmergencyContactPhone
                 };
 
-                if (patientDto.ImageFile != null)
+                // Handle image upload
+                if (patientDto.ImageFile != null && patientDto.ImageFile.Length > 0)
                 {
                     using (var memoryStream = new MemoryStream())
                     {
                         await patientDto.ImageFile.CopyToAsync(memoryStream);
-                        patient.ImageData = memoryStream.ToArray();
+                        patient.ImageData = memoryStream.ToArray(); // Save image data
                     }
                 }
 
                 await _unitOfWork.Patients.Add(patient);
-                TempData["SuccessMessage"] = "Doctor created successfully!";
+                await _unitOfWork.Complete(); // Save changes to the database
+                TempData["SuccessMessage"] = "Patient created successfully!";
                 return RedirectToAction(nameof(Index));
             }
+
+            // Log errors if the model state is invalid
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error.ErrorMessage); // Log or inspect
+            }
+
+            return View(patientDto); // Return the form with validation errors
+        }
+
+        // GET: Patient/Edit/5
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var patient = await _unitOfWork.Patients.GetById(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            var patientDto = new PatientDTO
+            {
+                PatientID = patient.PatientID,
+                FirstName = patient.FirstName,
+                LastName = patient.LastName,
+                DateOfBirth = patient.DateOfBirth,
+                Gender = patient.Gender,
+                PhoneNumber = patient.PhoneNumber,
+                Email = patient.Email,
+                BloodType = patient.BloodType,
+                EmergencyContactName = patient.EmergencyContactName,
+                EmergencyContactPhone = patient.EmergencyContactPhone
+            };
+
             return View(patientDto);
         }
+
+        // POST: Patient/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, PatientDTO patientDto)
+        {
+            if (id != patientDto.PatientID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var patient = await _unitOfWork.Patients.GetById(id);
+                    if (patient == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Update patient properties
+                    patient.FirstName = patientDto.FirstName;
+                    patient.LastName = patientDto.LastName;
+                    patient.DateOfBirth = patientDto.DateOfBirth;
+                    patient.Gender = patientDto.Gender;
+                    patient.PhoneNumber = patientDto.PhoneNumber;
+                    patient.Email = patientDto.Email;
+                    patient.BloodType = patientDto.BloodType;
+                    patient.EmergencyContactName = patientDto.EmergencyContactName;
+                    patient.EmergencyContactPhone = patientDto.EmergencyContactPhone;
+
+                    // Handle image upload
+                    if (patientDto.ImageFile != null && patientDto.ImageFile.Length > 0)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await patientDto.ImageFile.CopyToAsync(memoryStream);
+                            patient.ImageData = memoryStream.ToArray(); // Save new image data
+                        }
+                    }
+
+                    await _unitOfWork.Patients.Update(patient);
+                    await _unitOfWork.Complete(); // Save changes to the database
+                    TempData["SuccessMessage"] = "Patient updated successfully!";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!await PatientExists(patientDto.PatientID))
+                    {
+                        return NotFound();
+                    }
+                    throw; // Re-throw the exception to handle it in middleware
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Log errors if the model state is invalid
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error.ErrorMessage); // Log or inspect
+            }
+
+            return View(patientDto); // Return the form with validation errors
+        }
+
+        // GET: Patient/Delete/5
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var patient = await _unitOfWork.Patients.GetById(id);
-            await _unitOfWork.Patients.Delete(id);
-
             if (patient == null)
             {
                 return NotFound();
@@ -175,11 +197,28 @@ namespace ClinicManagementSystem.Controllers
 
             return View(patient);
         }
-        private async Task<bool> PatientExists(int id)
+
+        // POST: Patient/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var doctor = await _unitOfWork.Doctors.GetById(id);
-            return doctor != null;
+            var patient = await _unitOfWork.Patients.GetById(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            await _unitOfWork.Patients.Delete(id);
+            await _unitOfWork.Complete(); // Save changes to the database
+            TempData["SuccessMessage"] = "Patient deleted successfully!";
+            return RedirectToAction(nameof(Index));
         }
 
+        private async Task<bool> PatientExists(int id)
+        {
+            var patient = await _unitOfWork.Patients.GetById(id);
+            return patient != null;
+        }
     }
 }
