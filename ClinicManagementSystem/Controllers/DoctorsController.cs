@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Controllers
 {
-    [Authorize(Roles = "Doctor")]
-    public class DoctorController : Controller
+    [Authorize(Roles = "Doctors,Admin")]
+    public class DoctorsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DoctorController(IUnitOfWork unitOfWork)
+        public DoctorsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

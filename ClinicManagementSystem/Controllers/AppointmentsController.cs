@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Controllers
 {
-    [Authorize(Roles = "Patient")]
+    [Authorize(Roles = "Patient,Admin")]
     public class AppointmentsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -43,14 +43,14 @@ namespace ClinicManagementSystem.Controllers
                 Reason = appointment.Reason
             };
 
-            return View(appointmentDto); // Ensure the view expects AppointmentDTO
+            return View(appointmentDto); 
         }
 
         public IActionResult Create()
         {
-            ViewBag.Patients = _unitOfWork.Patients.GetAll().Result; // Adjust as necessary
-            ViewBag.Doctors = _unitOfWork.Doctors.GetAll().Result; // Adjust as necessary
-            return View(); // Returns the view to create an appointment
+            ViewBag.Patients = _unitOfWork.Patients.GetAll().Result; 
+            ViewBag.Doctors = _unitOfWork.Doctors.GetAll().Result; 
+            return View();
         }
 
         [HttpPost]
@@ -62,18 +62,16 @@ namespace ClinicManagementSystem.Controllers
                 await _unitOfWork.Appointments.Add(appointment);
                 await _unitOfWork.Complete();
 
-                // Get patient email from the PatientID
                 var patient = await _unitOfWork.Patients.GetById(appointment.PatientID);
                 if (patient != null)
                 {
                     var emailModel = new EmailModel
                     {
-                        To = patient.Email, // Assuming the Patient model has an Email property
+                        To = patient.Email, 
                         Subject = "Appointment Confirmation",
                         Body = $"Dear {patient.FirstName},\n\nYour appointment has been scheduled for {appointment.AppointmentDate:MMMM dd, yyyy h:mm tt}.\n\nBest Regards,\nClinic Management System"
                     };
 
-                    // Send confirmation email
                     await _emailService.SendEmailAsync(emailModel.To, emailModel.Subject, emailModel.Body);
                 }
 
@@ -81,7 +79,7 @@ namespace ClinicManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(appointment); // Return the model back to the view in case of validation failure
+            return View(appointment); 
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -92,10 +90,8 @@ namespace ClinicManagementSystem.Controllers
                 return NotFound();
             }
 
-            // Populate ViewBag with Patients and Doctors
-            ViewBag.Patients = await _unitOfWork.Patients.GetAll(); // Make sure to await this
-            ViewBag.Doctors = await _unitOfWork.Doctors.GetAll(); // Make sure to await this
-
+            ViewBag.Patients = await _unitOfWork.Patients.GetAll(); 
+            ViewBag.Doctors = await _unitOfWork.Doctors.GetAll(); 
             var appointmentDto = new AppointmentDTO
             {
                 AppointmentID = appointment.AppointmentID,
@@ -134,7 +130,7 @@ namespace ClinicManagementSystem.Controllers
                     appointment.Reason = appointmentDto.Reason;
 
                     await _unitOfWork.Appointments.Update(appointment);
-                    await _unitOfWork.Complete(); // Ensure you save changes after updating
+                    await _unitOfWork.Complete();
                     TempData["SuccessMessage"] = "Appointment updated successfully!";
                 }
                 catch (DbUpdateConcurrencyException)
@@ -145,12 +141,12 @@ namespace ClinicManagementSystem.Controllers
                     }
                     else
                     {
-                        throw; // Re-throw the exception for unexpected errors
+                        throw;
                     }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(appointmentDto); // Return the DTO back to the view in case of validation failure
+            return View(appointmentDto); 
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -161,7 +157,7 @@ namespace ClinicManagementSystem.Controllers
                 return NotFound();
             }
 
-            return View(appointment); // Ensure the view expects Appointment model
+            return View(appointment);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -169,7 +165,7 @@ namespace ClinicManagementSystem.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _unitOfWork.Appointments.Delete(id);
-            await _unitOfWork.Complete(); // Ensure you save changes after deletion
+            await _unitOfWork.Complete(); 
             TempData["SuccessMessage"] = "Appointment deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
@@ -177,7 +173,7 @@ namespace ClinicManagementSystem.Controllers
         private async Task<bool> AppointmentExists(int id)
         {
             var appointment = await _unitOfWork.Appointments.GetById(id);
-            return appointment != null; // Check for appointment existence
+            return appointment != null;
         }
     }
 }

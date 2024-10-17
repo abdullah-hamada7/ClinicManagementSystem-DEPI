@@ -1,6 +1,7 @@
 ﻿using ClinicManagementSystem.DTOs;
 using ClinicManagementSystem.Models;
 using ClinicManagementSystem.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Controllers
 {
+    [Authorize(Roles ="Patient,Admin")]
     public class PatientController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

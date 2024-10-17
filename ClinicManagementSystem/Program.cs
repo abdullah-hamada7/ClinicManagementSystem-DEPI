@@ -29,7 +29,7 @@ namespace ClinicManagementSystem
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("RequireDoctorRole", policy => policy.RequireRole("Doctor"));
+                options.AddPolicy("RequireDoctorRole", policy => policy.RequireRole("Doctors"));
                 options.AddPolicy("RequirePatientRole", policy => policy.RequireRole("Patient"));
             });
 
@@ -68,7 +68,7 @@ namespace ClinicManagementSystem
 
         private static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
         {
-            string[] roleNames = { "Admin", "Doctor", "Patient" };
+            string[] roleNames = { "Admin", "Doctors", "Patient" };
             foreach (var roleName in roleNames)
             {
                 if (!await roleManager.RoleExistsAsync(roleName))
@@ -80,6 +80,7 @@ namespace ClinicManagementSystem
 
         private static async Task SeedUsers(UserManager<IdentityUser> userManager)
         {
+            // Seed Admin user
             var adminEmail = "admin@example.com";
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
             if (adminUser == null)
@@ -88,6 +89,27 @@ namespace ClinicManagementSystem
                 await userManager.CreateAsync(adminUser, "AdminPassword123!");
                 await userManager.AddToRoleAsync(adminUser, "Admin");
             }
+
+            // Seed Doctor user
+            var doctorEmail = "doctor@example.com";
+            var doctorUser = await userManager.FindByEmailAsync(doctorEmail);
+            if (doctorUser == null)
+            {
+                doctorUser = new IdentityUser { UserName = doctorEmail, Email = doctorEmail };
+                await userManager.CreateAsync(doctorUser, "DoctorPassword123!");
+                await userManager.AddToRoleAsync(doctorUser, "Doctors");
+            }
+
+            // Seed Patient user
+            var patientEmail = "patient@example.com";
+            var patientUser = await userManager.FindByEmailAsync(patientEmail);
+            if (patientUser == null)
+            {
+                patientUser = new IdentityUser { UserName = patientEmail, Email = patientEmail };
+                await userManager.CreateAsync(patientUser, "PatientPassword123!");
+                await userManager.AddToRoleAsync(patientUser, "Patient");
+            }
         }
+
     }
 }
