@@ -1,0 +1,67 @@
+﻿@model ClinicManagementSystem.DTOs.PatientDTO
+
+<h2>Create Patient</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" class="form-control" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender"></label>
+        <select asp-for="Gender" class="form-control">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BloodType"></label>
+        <input asp-for="BloodType" class="form-control" />
+        <span asp-validation-for="BloodType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmergencyContactName"></label>
+        <input asp-for="EmergencyContactName" class="form-control" />
+        <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmergencyContactPhone"></label>
+        <input asp-for="EmergencyContactPhone" class="form-control" />
+        <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
+    </div>
+      <div class="form-group">
+          <label asp-for="ImageFile">Upload Image</label>
+          <input asp-for="ImageFile" type="file" class="form-control" />
+          <span asp-validation-for="ImageFile" class="text-danger"></span>
+      </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

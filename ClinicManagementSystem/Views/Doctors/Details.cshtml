@@ -1,0 +1,46 @@
+﻿@model ClinicManagementSystem.Models.Doctor
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+
+<h1>Doctor Details</h1>
+
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirstName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LastName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Specialization)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Specialization)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LicenseNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.LicenseNumber)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HireDate)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.HireDate)</dd>
+
+        @if (Model.ImageData != null)
+        {
+            <dt class="col-sm-3">Profile Image</dt>
+            <dd class="col-sm-9">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ImageData)" alt="Doctor Image" style="max-width: 200px;" />
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.DoctorID" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

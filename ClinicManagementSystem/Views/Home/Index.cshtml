@@ -1,8 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<form method="post" action="/Home/CreateCheckoutSession">
+    <!-- Form fields -->
+    <div>
+        <label for="name">Amount:</label>
+        <input type="text" id="amount" name="amount" value="" />
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+    <!-- Submit button -->
+    <button type="submit">Checkout</button>
+</form>

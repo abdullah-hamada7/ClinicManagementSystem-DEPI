@@ -1,0 +1,92 @@
+﻿@model ClinicManagementSystem.DTOs.DoctorDTO
+
+@{
+    ViewData["Title"] = "Create Doctor";
+}
+
+<h1>Create Doctor</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Specialization" class="control-label"></label>
+                <input asp-for="Specialization" class="form-control" required />
+                <span asp-validation-for="Specialization" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" required />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" type="email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="LicenseNumber" class="control-label"></label>
+                <input asp-for="LicenseNumber" class="form-control" required />
+                <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="HireDate" class="control-label"></label>
+                <input asp-for="HireDate" class="form-control" type="date" required />
+                <span asp-validation-for="HireDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DepartmentID" class="control-label"></label>
+                <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.Departments">
+                    <option value="">Select a department</option>
+                </select>
+                <span asp-validation-for="DepartmentID" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageFile" class="control-label">Profile Photo</label>
+                <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script>
+    $(document).ready(function () {
+        var successMessage = '@TempData["SuccessMessage"]';
+        if (successMessage) {
+            toastr.success(successMessage);
+        }
+    });
+</script>

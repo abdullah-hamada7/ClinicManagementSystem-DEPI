@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ClinicManagementSystem.styles.css" asp-append-version="true" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+                 /* Basic Reset */
+             body, html {
+
+                 margin: 0;
+                 padding: 0;
+                 font-family: Arial, sans-serif;
+                     background-color: #f4f4f9;
+             }
+
+
+             /* Main Admin Layout Styles */
+             .admin-wrapper {
+                     display
+        : flex;
+                 height: 100vh;
+
+             }
+
+             .sidebar {
+                     width: 250px;
+                 background-color: #343a40;
+
+                 color: #fff;
+                 display: flex;
+                 flex-direction: column;
+                     padding
+        : 20px;
+             }
+
+
+             .sidebar h2 {
+                 font-size: 1.5em;
+                     margin-bottom: 20px;
+                 text-align: center;
+
+             }
+
+             .sidebar a {
+                     co
+        lor: #cfd8dc;
+                 padding: 10px;
+
+                 text-decoration: none;
+                 display: block;
+                 border-radius: 4px;
+                     margin
+        -bottom: 10px;
+             }
+
+
+             .sidebar a:hover {
+                 background-color: #495057;
+                 }
+
+
+             .sidebar a.active {
+                 background-color: #007bff;
+                 color: #fff;
+             }
+
+             .main-content {
+                 flex: 1;
+                 padding: 20px;
+                 display: flex;
+                 flex-direction: column;
+             }
+
+             .header {
+                 background-color: #007bff;
+                 color: #fff;
+                 padding: 15px;
+                 display: flex;
+                 justify-content: space-between;
+                 align-items: center;
+             }
+
+             .header .logout {
+                 background-color: transparent;
+                 border: none;
+                 color: #fff;
+                 cursor: pointer;
+             }
+
+             .content {
+                 margin-top: 20px;
+                 flex: 1;
+             }
+    </style>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>Admin Panel</h2>
+            <a href="~/Admin/Index" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="~/Admin/Appointments"><i class="fas fa-calendar-check"></i> Appointments</a>
+            <a href="~/Admin/Doctors"><i class="fas fa-user-md"></i> Doctors</a>
+            <a href="~/Admin/Patients"><i class="fas fa-user-injured"></i> Patients</a>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MediNexus</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <!-- Add more navigation links as needed -->
+                            </ul>
+                            <ul class="navbar-nav">
+                                <!-- Check if the user is authenticated -->
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Hello, @User.Identity.Name</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm">
+                                            <button type="submit" class="nav-link btn btn-link" style="display:inline; padding:0; border:none; background:none;">Logout</button>
+                                        </form>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+            </header>
+
+
+
+
+            <!-- Content Area -->
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

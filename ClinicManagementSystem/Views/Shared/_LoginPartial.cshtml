@@ -1,0 +1,62 @@
+﻿﻿@* @using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <li class="nav-item">
+            <span id="manage" class="nav-link text-dark" style="cursor: default;" title="Manage">Hello @UserManager.GetUserName(User)!</span>
+        </li>
+
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
+ *@
+ @using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @* Check if the current page is not the Billing Address page *@
+        var isBillingAddressPage = Context.Request.Path.ToString().Contains("Cart/Summary");
+
+        if (!isBillingAddressPage)
+        {
+            <li class="nav-item">
+                <span id="manage" class="nav-link text-dark" style="cursor: default;" title="Manage">Hello @UserManager.GetUserName(User)!</span>
+            </li>
+        }
+
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>

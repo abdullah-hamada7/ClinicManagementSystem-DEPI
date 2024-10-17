@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ClinicManagementSystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h2>Departments</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Create New Department</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Department Name</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.DepartmentName</td>
+                <td>@department.Location</td>
+                <td>
+                    <a class="btn btn-info" href="@Url.Action("Edit", new { id = department.DepartmentID })">Edit</a> |
+                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = department.DepartmentID })">Delete</a> |
+                    <a class="btn btn-success" href="@Url.Action("Details", new { id = department.DepartmentID })">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
