@@ -3,115 +3,103 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Admin Panel</title>
+    <title>@ViewData["Title"] - Doctor Panel</title>
     <link rel="stylesheet" href="~/css/admin.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ClinicManagementSystem.styles.css" asp-append-version="true" />
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
-                 /* Basic Reset */
-             body, html {
+        /* Basic Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
 
-                 margin: 0;
-                 padding: 0;
-                 font-family: Arial, sans-serif;
-                     background-color: #f4f4f9;
-             }
+        /* Main Admin Layout Styles */
+        .admin-wrapper {
+            display: flex;
+            height: 100vh;
+        }
 
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-             /* Main Admin Layout Styles */
-             .admin-wrapper {
-                     display
-        : flex;
-                 height: 100vh;
+            .sidebar h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+                text-align: center;
+            }
 
-             }
+            .sidebar a {
+                color: #cfd8dc;
+                padding: 10px;
+                text-decoration: none;
+                display: block;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
 
-             .sidebar {
-                     width: 250px;
-                 background-color: #343a40;
+                .sidebar a:hover {
+                    background-color: #495057;
+                }
 
-                 color: #fff;
-                 display: flex;
-                 flex-direction: column;
-                     padding
-        : 20px;
-             }
+                .sidebar a.active {
+                    background-color: #007bff;
+                    color: #fff;
+                }
 
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
 
-             .sidebar h2 {
-                 font-size: 1.5em;
-                     margin-bottom: 20px;
-                 text-align: center;
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-             }
+            .header .logout {
+                background-color: transparent;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+            }
 
-             .sidebar a {
-                     co
-        lor: #cfd8dc;
-                 padding: 10px;
-
-                 text-decoration: none;
-                 display: block;
-                 border-radius: 4px;
-                     margin
-        -bottom: 10px;
-             }
-
-
-             .sidebar a:hover {
-                 background-color: #495057;
-                 }
-
-
-             .sidebar a.active {
-                 background-color: #007bff;
-                 color: #fff;
-             }
-
-             .main-content {
-                 flex: 1;
-                 padding: 20px;
-                 display: flex;
-                 flex-direction: column;
-             }
-
-             .header {
-                 background-color: #007bff;
-                 color: #fff;
-                 padding: 15px;
-                 display: flex;
-                 justify-content: space-between;
-                 align-items: center;
-             }
-
-             .header .logout {
-                 background-color: transparent;
-                 border: none;
-                 color: #fff;
-                 cursor: pointer;
-             }
-
-             .content {
-                 margin-top: 20px;
-                 flex: 1;
-             }
+        .content {
+            margin-top: 20px;
+            flex: 1;
+        }
     </style>
 </head>
 <body>
     <div class="admin-wrapper">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <h2>Admin Panel</h2>
-            <a href="~/Admin/Index" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <a href="~/Admin/Doctors"><i class="fas fa-user-md"></i> Doctors</a>
-            <a href="~/Admin/Patients"><i class="fas fa-user-injured"></i> Patients</a>
+            <h2>Doctor Panel</h2>
+            <a href="~/Doctors/Dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="~/Doctors/MedicalRecords"><i class="fas fa-tachometer-alt"></i> MedicalReports</a>
+            <a href="~/Appointments/Index"><i class="fas fa-user-md"></i> Appointments</a>
+            <a href="~/Doctors/Medications"><i class="fas fa-user-injured"></i> Medications</a>
+            <a href="~/Doctors/Prescriptions"><i class="fas fa-user-injured"></i> Prescriptions</a>
+            <a href="~/Patient/Index"><i class="fas fa-user-injured"></i> Patients</a>
         </nav>
 
         <!-- Main Content -->
@@ -131,7 +119,6 @@
                                 <!-- Add more navigation links as needed -->
                             </ul>
                             <ul class="navbar-nav">
-                                <!-- Check if the user is authenticated -->
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <li class="nav-item">
@@ -156,11 +143,7 @@
                         </div>
                     </div>
                 </nav>
-
             </header>
-
-
-
 
             <!-- Content Area -->
             <div class="content">
@@ -168,5 +151,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Render the Scripts section if it's defined in the views -->
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

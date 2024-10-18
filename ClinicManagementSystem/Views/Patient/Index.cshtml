@@ -7,34 +7,54 @@
 <h2>Patients List</h2>
 
 <p>
-    @Html.ActionLink("Create New Patient", "Create")
+    @Html.ActionLink("Create New Patient", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().FirstName)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().LastName)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Gender)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-            <td>@Html.DisplayFor(modelItem => item.DateOfBirth.ToString("yyyy-MM-dd"))</td>
-            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
-            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-            <td>@Html.DisplayFor(modelItem => item.Email)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PatientID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PatientID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PatientID })
-            </td>
+            <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DateOfBirth)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Address)</th>
+            <th>Actions</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+
+        {
+            <tr>
+                <td colspan="8" class="text-center">No patients found.</td>
+            </tr>
+        }
+
+        else
+
+        {
+
+            foreach (var item in Model)
+
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@item.DateOfBirth.ToString("yyyy-MM-dd")</td> <!-- Format DateTime here -->
+                    <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PatientID }, new { @class = "btn btn-warning btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PatientID }, new { @class = "btn btn-info btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PatientID }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
 </table>

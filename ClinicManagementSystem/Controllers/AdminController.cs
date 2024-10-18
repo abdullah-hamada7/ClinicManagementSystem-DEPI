@@ -2,6 +2,8 @@
 using ClinicManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace ClinicManagementSystem.Controllers
 {
@@ -19,7 +21,6 @@ namespace ClinicManagementSystem.Controllers
         {
             var model = new DashboardViewModel
             {
-                AppointmentsCount = _context.Appointments.Count(),
                 DoctorsCount = _context.Doctors.Count(),
                 PatientsCount = _context.Patients.Count()
             };
@@ -27,21 +28,12 @@ namespace ClinicManagementSystem.Controllers
         }
 
 
-        // GET: Admin/Appointments
-        public IActionResult Appointments()
-        {
-            var appointments = _context.Appointments.ToList();
-            return View(appointments);
-        }
-
-        // GET: Admin/Doctors
         public IActionResult Doctors()
         {
             var doctors = _context.Doctors.ToList();
             return View(doctors);
         }
 
-        // GET: Admin/Patients
         public IActionResult Patients()
         {
             var patients = _context.Patients.ToList();

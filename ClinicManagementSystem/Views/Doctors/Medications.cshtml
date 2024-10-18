@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ClinicManagementSystem.Models.Medication>
+@{
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+
+}
+
+@{
+    ViewData["Title"] = "Medications";
+}
+
+<h2>Medications</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<a asp-action="Create" asp-controller="Medication" class="btn btn-primary">Create Medication</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Medication Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medication in Model)
+        {
+            <tr>
+                <td>@medication.MedicationName</td>
+                <td>@medication.Description</td>
+                <td>
+                    <a asp-action="EditMedication" asp-route-id="@medication.MedicationID" class="btn btn-warning">Edit</a>
+                    <a asp-action="DeleteMedication" asp-route-id="@medication.MedicationID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

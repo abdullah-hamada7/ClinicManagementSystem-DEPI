@@ -4,11 +4,11 @@ using ClinicManagementSystem.Services;
 using ClinicManagementSystem.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Controllers
 {
-    [Authorize(Roles = "Patient,Admin")]
     public class AppointmentsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -19,12 +19,14 @@ namespace ClinicManagementSystem.Controllers
             _unitOfWork = unitOfWork;
             _emailService = emailService;
         }
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> Index()
         {
             var appointments = await _unitOfWork.Appointments.GetAll();
             return View(appointments);
         }
+        [Authorize(Roles = "Doctor")]
 
         public async Task<IActionResult> Details(int id)
         {
@@ -43,18 +45,24 @@ namespace ClinicManagementSystem.Controllers
                 Reason = appointment.Reason
             };
 
-            return View(appointmentDto); 
+            return View(appointmentDto);
         }
+        [Authorize(Roles = "Doctor")]
 
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
-            ViewBag.Patients = _unitOfWork.Patients.GetAll().Result; 
-            ViewBag.Doctors = _unitOfWork.Doctors.GetAll().Result; 
+            var patients = await _unitOfWork.Patients.GetAll();
+            var doctors = await _unitOfWork.Doctors.GetAll();
+
+            ViewBag.Patients = new SelectList(patients, "PatientID", "FirstName");
+            ViewBag.Doctors = new SelectList(doctors, "DoctorID", "FirstName");
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Doctor")]
         public async Task<IActionResult> Create(Appointment appointment)
         {
             if (ModelState.IsValid)
@@ -67,7 +75,7 @@ namespace ClinicManagementSystem.Controllers
                 {
                     var emailModel = new EmailModel
                     {
-                        To = patient.Email, 
+                        To = patient.Email,
                         Subject = "Appointment Confirmation",
                         Body = $"Dear {patient.FirstName},\n\nYour appointment has been scheduled for {appointment.AppointmentDate:MMMM dd, yyyy h:mm tt}.\n\nBest Regards,\nClinic Management System"
                     };
@@ -79,8 +87,9 @@ namespace ClinicManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(appointment); 
+            return View(appointment);
         }
+        [Authorize(Roles = "Doctor")]
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -90,8 +99,8 @@ namespace ClinicManagementSystem.Controllers
                 return NotFound();
             }
 
-            ViewBag.Patients = await _unitOfWork.Patients.GetAll(); 
-            ViewBag.Doctors = await _unitOfWork.Doctors.GetAll(); 
+            ViewBag.Patients = await _unitOfWork.Patients.GetAll();
+            ViewBag.Doctors = await _unitOfWork.Doctors.GetAll();
             var appointmentDto = new AppointmentDTO
             {
                 AppointmentID = appointment.AppointmentID,
@@ -103,8 +112,7 @@ namespace ClinicManagementSystem.Controllers
 
             return View(appointmentDto);
         }
-
-
+        [Authorize(Roles = "Doctor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, AppointmentDTO appointmentDto)
@@ -146,9 +154,9 @@ namespace ClinicManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(appointmentDto); 
+            return View(appointmentDto);
         }
-
+        [Authorize(Roles = "Doctor")]
         public async Task<IActionResult> Delete(int id)
         {
             var appointment = await _unitOfWork.Appointments.GetById(id);
@@ -159,13 +167,13 @@ namespace ClinicManagementSystem.Controllers
 
             return View(appointment);
         }
-
+        [Authorize(Roles = "Doctor")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _unitOfWork.Appointments.Delete(id);
-            await _unitOfWork.Complete(); 
+            await _unitOfWork.Complete();
             TempData["SuccessMessage"] = "Appointment deleted successfully!";
             return RedirectToAction(nameof(Index));
         }

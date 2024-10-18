@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ClinicManagementSystem.Models.Appointment>
+﻿@model IEnumerable<ClinicManagementSystem.DTOs.AppointmentDTO>
+
 @{
     ViewData["Title"] = "Appointments Management";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,29 +21,40 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var appointment in Model)
+            @if (Model.Any())
+            {
+                foreach (var appointment in Model)
+                {
+                    <tr>
+                        <td>@appointment.AppointmentID</td>
+                        <td>@appointment.PatientName</td> 
+                        <td>@appointment.DoctorName</td>
+                        <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
+                        <td>@appointment.Reason</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@appointment.AppointmentID" asp-controller="Appointments" class="btn-action btn-edit">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@appointment.AppointmentID" asp-controller="Appointments" class="btn-action btn-delete">Delete</a>
+                            <a asp-action="Details" asp-route-id="@appointment.AppointmentID" asp-controller="Appointments" class="btn-action btn-details">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@appointment.AppointmentID</td>
-                    <td>@appointment.Patient.FirstName</td>
-                    <td>@appointment.Doctor.FirstName</td>
-                    <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
-                    <td>@appointment.Reason</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@appointment.AppointmentID" class="btn-action btn-edit">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@appointment.AppointmentID" class="btn-action btn-delete">Delete</a>
-                        <a asp-action="Details" asp-route-id="@appointment.AppointmentID" class="btn-action btn-details">Details</a>
-                    </td>
+                    <td colspan="6" class="text-center">No appointments found.</td>
                 </tr>
             }
         </tbody>
     </table>
 </section>
 
+
 <style>
     .appointments-section {
         margin-top: 20px;
     }
+
     .btn-create {
         display: inline-block;
         margin-bottom: 15px;
@@ -52,16 +64,19 @@
         border-radius: 4px;
         text-decoration: none;
     }
+
     .appointments-table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
-    .appointments-table th, .appointments-table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: left;
-    }
+
+        .appointments-table th, .appointments-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
     .btn-action {
         padding: 5px 10px;
         margin: 0 2px;
@@ -69,14 +84,17 @@
         text-decoration: none;
         font-size: 0.9em;
     }
+
     .btn-edit {
         background-color: #ffc107;
         color: white;
     }
+
     .btn-delete {
         background-color: #dc3545;
         color: white;
     }
+
     .btn-details {
         background-color: #17a2b8;
         color: white;
