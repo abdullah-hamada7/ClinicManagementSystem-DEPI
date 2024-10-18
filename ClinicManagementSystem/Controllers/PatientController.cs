@@ -10,22 +10,24 @@ using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Controllers
 {
-    [Authorize(Roles ="Patient,Admin")]
+    [Authorize(Roles = "Doctor,Admin")]
     public class PatientController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<PatientController> _logger;
 
-        public PatientController(IUnitOfWork unitOfWork)
+        public PatientController(IUnitOfWork unitOfWork, ILogger<PatientController> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
-        // GET: Patient
         public async Task<IActionResult> Index()
         {
             var patients = await _unitOfWork.Patients.GetAll();
             return View(patients);
         }
+
 
         // GET: Patient/Details/5
         public async Task<IActionResult> Details(int id)
@@ -64,33 +66,37 @@ namespace ClinicManagementSystem.Controllers
                     Email = patientDto.Email,
                     BloodType = patientDto.BloodType,
                     EmergencyContactName = patientDto.EmergencyContactName,
-                    EmergencyContactPhone = patientDto.EmergencyContactPhone
+                    EmergencyContactPhone = patientDto.EmergencyContactPhone,
+                    Address=patientDto.Address
                 };
 
                 // Handle image upload
                 if (patientDto.ImageFile != null && patientDto.ImageFile.Length > 0)
                 {
-                    using (var memoryStream = new MemoryStream())
+                    var acceptedTypes = new[] { "image/jpeg", "image/png", "image/gif" };
+                    if (acceptedTypes.Contains(patientDto.ImageFile.ContentType))
                     {
-                        await patientDto.ImageFile.CopyToAsync(memoryStream);
-                        patient.ImageData = memoryStream.ToArray(); // Save image data
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await patientDto.ImageFile.CopyToAsync(memoryStream);
+                            patient.ImageData = memoryStream.ToArray(); // Save image data
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("ImageFile", "Please upload a valid image file (JPEG, PNG, GIF).");
+                        return View(patientDto);
                     }
                 }
 
                 await _unitOfWork.Patients.Add(patient);
-                await _unitOfWork.Complete(); // Save changes to the database
+                await _unitOfWork.Complete();
                 TempData["SuccessMessage"] = "Patient created successfully!";
                 return RedirectToAction(nameof(Index));
             }
 
-            // Log errors if the model state is invalid
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            foreach (var error in errors)
-            {
-                Console.WriteLine(error.ErrorMessage); // Log or inspect
-            }
-
-            return View(patientDto); // Return the form with validation errors
+            LogModelErrors();
+            return View(patientDto);
         }
 
         // GET: Patient/Edit/5
@@ -140,7 +146,6 @@ namespace ClinicManagementSystem.Controllers
                         return NotFound();
                     }
 
-                    // Update patient properties
                     patient.FirstName = patientDto.FirstName;
                     patient.LastName = patientDto.LastName;
                     patient.DateOfBirth = patientDto.DateOfBirth;
@@ -151,19 +156,28 @@ namespace ClinicManagementSystem.Controllers
                     patient.EmergencyContactName = patientDto.EmergencyContactName;
                     patient.EmergencyContactPhone = patientDto.EmergencyContactPhone;
 
-                    // Handle image upload
                     if (patientDto.ImageFile != null && patientDto.ImageFile.Length > 0)
                     {
-                        using (var memoryStream = new MemoryStream())
+                        var acceptedTypes = new[] { "image/jpeg", "image/png", "image/gif" };
+                        if (acceptedTypes.Contains(patientDto.ImageFile.ContentType))
                         {
-                            await patientDto.ImageFile.CopyToAsync(memoryStream);
-                            patient.ImageData = memoryStream.ToArray(); // Save new image data
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await patientDto.ImageFile.CopyToAsync(memoryStream);
+                                patient.ImageData = memoryStream.ToArray();
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("ImageFile", "Please upload a valid image file (JPEG, PNG, GIF).");
+                            return View(patientDto);
                         }
                     }
 
                     await _unitOfWork.Patients.Update(patient);
-                    await _unitOfWork.Complete(); // Save changes to the database
+                    await _unitOfWork.Complete();
                     TempData["SuccessMessage"] = "Patient updated successfully!";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -171,20 +185,12 @@ namespace ClinicManagementSystem.Controllers
                     {
                         return NotFound();
                     }
-                    throw; // Re-throw the exception to handle it in middleware
+                    throw;
                 }
-
-                return RedirectToAction(nameof(Index));
             }
 
-            // Log errors if the model state is invalid
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            foreach (var error in errors)
-            {
-                Console.WriteLine(error.ErrorMessage); // Log or inspect
-            }
-
-            return View(patientDto); // Return the form with validation errors
+            LogModelErrors();
+            return View(patientDto);
         }
 
         // GET: Patient/Delete/5
@@ -212,15 +218,23 @@ namespace ClinicManagementSystem.Controllers
             }
 
             await _unitOfWork.Patients.Delete(id);
-            await _unitOfWork.Complete(); // Save changes to the database
+            await _unitOfWork.Complete();
             TempData["SuccessMessage"] = "Patient deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 
         private async Task<bool> PatientExists(int id)
         {
-            var patient = await _unitOfWork.Patients.GetById(id);
-            return patient != null;
+            return await _unitOfWork.Patients.GetById(id) != null;
+        }
+
+        private void LogModelErrors()
+        {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            foreach (var error in errors)
+            {
+                _logger.LogError(error.ErrorMessage);
+            }
         }
     }
 }

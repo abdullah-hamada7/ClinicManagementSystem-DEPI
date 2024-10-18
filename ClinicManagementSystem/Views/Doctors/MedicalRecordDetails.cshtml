@@ -1,0 +1,36 @@
+﻿@model ClinicManagementSystem.Models.MedicalRecord
+@{
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+
+}
+<h2>Medical Record Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Patient ID</th>
+        <td>@Model.PatientID</td>
+    </tr>
+    <tr>
+        <th>Doctor ID</th>
+        <td>@Model.DoctorID</td>
+    </tr>
+    <tr>
+        <th>Visit Date</th>
+        <td>@Model.VisitDate.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Diagnosis</th>
+        <td>@Model.Diagnosis</td>
+    </tr>
+    <tr>
+        <th>Prescription</th>
+        <td>@Model.Prescription</td>
+    </tr>
+    <tr>
+        <th>Notes</th>
+        <td>@Model.Notes</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("Edit","MedicalRecord", new { id = Model.ID })" class="btn btn-primary">Edit</a>
+<a href="@Url.Action("Index","MedicalRecord") class="btn btn-secondary">Back to List</a>

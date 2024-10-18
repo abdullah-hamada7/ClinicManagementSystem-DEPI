@@ -8,43 +8,75 @@
     <h2>Manage Doctors</h2>
     <a asp-action="Create" asp-controller="Doctors" class="btn-create">Add New Doctor</a>
 
-    <table class="doctors-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Specialization</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var doctor in Model)
-            {
-                <tr>
-                    <td>@doctor.DoctorID</td>
-                    <td>@doctor.FirstName</td>
-                    <td>@doctor.LastName</td>
-                    <td>@doctor.Specialization</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@doctor.DoctorID" class="btn-action btn-edit">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@doctor.DoctorID" class="btn-action btn-delete">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="doctors-cards">
+        @foreach (var doctor in Model)
+        {
+            <div class="doctor-card">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(doctor.ImageData)" alt="Doctor Profile Picture" class="profile-picture" />                <div class="card-content">
+                    <h3>@doctor.FirstName @doctor.LastName</h3>
+                    <p><strong>Specialization:</strong> @doctor.Specialization</p>
+                    <p><strong>ID:</strong> @doctor.DoctorID</p>
+                    <div class="card-actions">
+                        <a asp-action="Edit" asp-route-id="@doctor.DoctorID" asp-controller="Doctors" class="btn-action btn-edit">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@doctor.DoctorID" asp-controller="Doctors" class="btn-action btn-delete">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </section>
 
 <style>
     .doctors-section {
         margin-top: 20px;
     }
-    .doctors-table {
-        width: 100%;
-        border-collapse: collapse;
+
+    .doctors-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
         margin-top: 20px;
     }
+
+    .doctor-card {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        text-align: center;
+    }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .card-content h3 {
+        margin: 0 0 10px;
+        font-size: 1.2em;
+        color: #333;
+    }
+
+    .card-content p {
+        margin: 5px 0;
+        font-size: 0.95em;
+        color: #555;
+    }
+
+    .card-actions {
+        margin-top: 15px;
+    }
+
     .btn-create {
         display: inline-block;
         margin-bottom: 15px;
@@ -54,33 +86,22 @@
         border-radius: 4px;
         text-decoration: none;
     }
-    .appointments-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    .appointments-table th, .appointments-table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: left;
-    }
+
     .btn-action {
         padding: 5px 10px;
-        margin: 0 2px;
+        margin: 0 5px;
         border-radius: 4px;
         text-decoration: none;
         font-size: 0.9em;
     }
+
     .btn-edit {
         background-color: #ffc107;
         color: white;
     }
+
     .btn-delete {
         background-color: #dc3545;
-        color: white;
-    }
-    .btn-details {
-        background-color: #17a2b8;
         color: white;
     }
 </style>

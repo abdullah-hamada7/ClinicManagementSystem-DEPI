@@ -1,0 +1,39 @@
+﻿@model ClinicManagementSystem.DTOs.MedicalRecordDTO
+@{
+    Layout = "~/Views/Shared/_DoctorLayout";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+
+    }
+
+<h2>Create Medical Record</h2>
+
+<form asp-action="Create" asp-controller="MedicalRecords" method="post">
+    <div class="form-group">
+        <label for="PatientID">Patient ID</label>
+        <input type="text" asp-for="PatientID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="DoctorID">Doctor ID</label>
+        <input type="text" asp-for="DoctorID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="VisitDate">Visit Date</label>
+        <input type="date" asp-for="VisitDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Diagnosis">Diagnosis</label>
+        <textarea asp-for="Diagnosis" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Prescription">Prescription</label>
+        <textarea asp-for="Prescription" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Notes">Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <!-- Add other fields like Height, Weight, etc. as needed -->
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("Index","MedicalRecords")" class="btn btn-secondary">Cancel</a>
+</form>

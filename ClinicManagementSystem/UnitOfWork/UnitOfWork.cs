@@ -1,5 +1,6 @@
 ﻿using ClinicManagementSystem.Models;
 using ClinicManagementSystem.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 
 namespace ClinicManagementSystem.UnitOfWork
@@ -36,6 +37,19 @@ namespace ClinicManagementSystem.UnitOfWork
         public void Dispose()
         {
             _context.Dispose();
+        }
+        public async Task<int> GetDoctorsCountAsync()
+        {
+            return await _context.Set<Doctor>().CountAsync();
+        }
+
+        public async Task<int> GetPatientsCountAsync()
+        {
+            return await _context.Set<Patient>().CountAsync();
+        }
+        public async Task<int> GetAppointmentsCountAsync()
+        {
+            return await _context.Set<Appointment>().CountAsync();
         }
     }
 }

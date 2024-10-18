@@ -1,48 +1,110 @@
 ﻿@model IEnumerable<ClinicManagementSystem.Models.Appointment>
 
 @{
-    ViewData["Title"] = "Appointments";
+    ViewData["Title"] = "Appointments Management";
+    Layout = User.IsInRole("Admin") ? "~/Views/Shared/_AdminLayout.cshtml" :
+             "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<section class="appointments-section">
+    <h2>Manage Appointments</h2>
+    <a asp-action="Create" asp-controller="Appointments" class="btn-create">Create New Appointment</a>
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["SuccessMessage"]
-    </div>
-}
-
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New Appointment</a>
-</p>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.First().AppointmentID)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Patient.FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Doctor.FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.First().AppointmentDate)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Reason)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var appointment in Model)
-        {
+    <table class="appointments-table">
+        <thead>
             <tr>
-                <td>@appointment.AppointmentID</td>
-                <td>@appointment.Patient.FirstName</td>
-                <td>@appointment.Doctor.FirstName</td>
-                <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
-                <td>@appointment.Reason</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@appointment.AppointmentID" class="btn btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@appointment.AppointmentID" class="btn btn-danger">Delete</a>
-                    <a asp-action="Details" asp-route-id="@appointment.AppointmentID" class="btn btn-info">Details</a>
-                </td>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date & Time</th>
+                <th>Reason</th>
+                <th>Actions</th>
             </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                foreach (var appointment in Model)
+                {
+                    <tr>
+                        <td>@appointment.AppointmentID</td>
+                        <td>@appointment.PatientID</td>
+                        <td>@appointment.DoctorID</td>
+                        <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
+                        <td>@appointment.Reason</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@appointment.AppointmentID" class="btn-action btn-edit">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@appointment.AppointmentID"
+                               class="btn-action btn-delete"
+                               onclick="return confirm('Are you sure you want to delete this appointment?');">Delete</a>
+                            <a asp-action="Details" asp-route-id="@appointment.AppointmentID" class="btn-action btn-details">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No appointments found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+
+<style>
+    .appointments-section {
+        margin-top: 20px;
+    }
+
+    .btn-create {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 16px;
+        background-color: #28a745;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .appointments-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .appointments-table th, .appointments-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
         }
-    </tbody>
-</table>
+
+    .btn-action {
+        padding: 5px 10px;
+        margin: 0 2px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    /* Add hover effects */
+    .btn-action:hover {
+        opacity: 0.8;
+    }
+</style>

@@ -14,5 +14,9 @@ namespace ClinicManagementSystem.UnitOfWork
         IRepository<Prescription> Prescriptions { get; }
         IRepository<Department> Departments { get; }
         Task Complete();
+            Task<int> GetDoctorsCountAsync();
+            Task<int> GetPatientsCountAsync();
+            Task<int> GetAppointmentsCountAsync();
+
     }
 }

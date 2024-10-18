@@ -1,6 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Admin Dashboard";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Doctor Dashboard";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
 
 <section class="dashboard">
@@ -19,6 +19,13 @@
                 <center><span class="stat-number">@Model.PatientsCount</span></center>
             </div>
             <a asp-action="Index" asp-controller="Patient" class="btn">View Patients</a>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3>Total Appointments</h3>
+                <center><span class="stat-number">@Model.AppointmentsCount</span></center>
+            </div>
+            <a asp-action="Index" asp-controller="Appointments" class="btn">View Appointments</a>
         </div>
     </div>
 </section>

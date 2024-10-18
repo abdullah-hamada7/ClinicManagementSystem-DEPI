@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClinicManagementSystem.Models.Prescription>
+
+@{
+    ViewData["Title"] = "Prescriptions";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+
+}
+
+<h1>Prescriptions</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Prescription" class="btn btn-primary">Create New</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>@Html.DisplayNameFor(model => model.PrescriptionID)</th>
+                <th>@Html.DisplayNameFor(model => model.PatientID)</th>
+                <th>@Html.DisplayNameFor(model => model.DoctorID)</th>
+                <th>@Html.DisplayNameFor(model => model.MedicationID)</th>
+                <th>@Html.DisplayNameFor(model => model.Dosage)</th>
+                <th>@Html.DisplayNameFor(model => model.Frequency)</th>
+                <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                <th>@Html.DisplayNameFor(model => model.ImageData)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.ImageData != null)
+                        {
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageData)"
+                                 alt="Prescription Photo" style="max-width: 50px; max-height: 50px;" />
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.PrescriptionID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PatientID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DoctorID)</td>>
+                    <td>@Html.DisplayFor(modelItem => item.MedicationID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Dosage)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Frequency)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ImageData)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PrescriptionID" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.PrescriptionID" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.PrescriptionID" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
