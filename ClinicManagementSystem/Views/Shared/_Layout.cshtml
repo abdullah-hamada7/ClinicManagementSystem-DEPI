@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ClinicManagementSystem.styles.css" asp-append-version="true" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -58,15 +59,35 @@
         </nav>
 
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ClinicManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <img src="assets/assets_frontend/appointment_img.png">
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Prescripto</h4>
+                <p>Learn more about the quality of services we provide.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <p>About Us</p>
+                <p>Services</p>
+                <p>Contact</p>
+            </div>
+            <div class="footer-section">
+                <h4>Get in Touch</h4>
+                <p>+123 456 789</p>
+                <p>info@prescripto.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 crew team - All Rights Reserved</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -5,8 +5,136 @@
       "PackagePath": "staticwebassets\\ClinicManagementSystem.bundle.scp.css"
     },
     {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\about_image.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\about_image.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\appointment_img.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\appointment_img.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\chats_icon.svg",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\chats_icon.svg"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\contact_image.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\contact_image.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\cross_icon.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\cross_icon.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc1.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc1.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc10.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc10.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc11.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc11.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc12.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc12.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc13.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc13.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc14.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc14.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc15.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc15.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc2.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc2.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc3.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc3.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc4.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc4.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc5.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc5.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc6.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc6.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc7.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc7.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc8.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc8.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\doc9.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\doc9.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\dropdown_icon.svg",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\dropdown_icon.svg"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\group_profiles.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\group_profiles.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\header_img.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\header_img.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\profile_pic.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\profile_pic.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\upload_area.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\upload_area.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\upload_icon.png",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\upload_icon.png"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\assets\\assets_frontend\\verified_icon.svg",
+      "PackagePath": "staticwebassets\\assets\\assets_frontend\\verified_icon.svg"
+    },
+    {
       "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\styles_aboutUS.css",
+      "PackagePath": "staticwebassets\\css\\styles_aboutUS.css"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\styles_contactUs.css",
+      "PackagePath": "staticwebassets\\css\\styles_contactUs.css"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\styles_profile.css",
+      "PackagePath": "staticwebassets\\css\\styles_profile.css"
+    },
+    {
+      "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\css\\stylesheet.css",
+      "PackagePath": "staticwebassets\\css\\stylesheet.css"
     },
     {
       "Id": "F:\\ClinicManagementSystem\\ClinicManagementSystem\\wwwroot\\favicon.ico",
