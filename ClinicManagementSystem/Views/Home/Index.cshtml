@@ -1,11 +1,103 @@
 ﻿<form method="post" action="/Home/CreateCheckoutSession">
     <!-- Form fields -->
-    <div>
-        <label for="name">Amount:</label>
-        <input type="text" id="amount" name="amount" value="" />
-    </div>
 
 
-    <!-- Submit button -->
-    <button type="submit">Checkout</button>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Book Appointment With Trusted Doctors</h1>
+                <p>Find the right doctor and book an appointment easily from anywhere in the world.</p>
+                <a href="~/Appointments/Create">Book Appointments</a>
+            </div>
+            <div class="hero-image">
+                <img src="~/assets/assets_frontend/header_img.png" alt="Doctors Image">
+            </div>
+        </div>
+    </section>
+    <section class="speciality">
+        <h2>Find by Speciality</h2>
+        <div class="specialities">
+            <div class="speciality-item">General Physician</div>
+            <div class="speciality-item">Dermatologist</div>
+            <div class="speciality-item">Pediatrician</div>
+            <div class="speciality-item">Neurologist</div>
+            <div class="speciality-item">Cardiologist</div>
+        </div>
+    </section>
+    <section class="doctors">
+        <h2>Top Doctors to Book</h2>
+@*         @foreach(
+
+        ) *@
+        <div class="doctor-grid">
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc10.png" alt="Doctor">
+                <h3>Dr. Richard James</h3>
+                <p>Cardiologist</p>
+                <a href="~/Doctors/details/2">Book Appointments</a>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="assets/assets_frontend/doc13.png" alt="Doctor">
+                <h3>Dr. Sarah Lee</h3>
+                <p>Neurologist</p>
+                <button class="btn-secondary">Book Now</button>
+            </div>
+
+        </div>
+    </section>
 </form>

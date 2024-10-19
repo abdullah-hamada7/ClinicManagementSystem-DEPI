@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Controllers
 {
-    [Authorize(Roles = "Doctor,Admin")]
     public class PatientController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -21,6 +20,7 @@ namespace ClinicManagementSystem.Controllers
             _unitOfWork = unitOfWork;
             _logger = logger;
         }
+        [Authorize(Roles = "Doctor,Admin")]
 
         public async Task<IActionResult> Index()
         {
@@ -28,8 +28,7 @@ namespace ClinicManagementSystem.Controllers
             return View(patients);
         }
 
-
-        // GET: Patient/Details/5
+        [Authorize(Roles = "Doctor,Admin,Patient")]
         public async Task<IActionResult> Details(int id)
         {
             var patient = await _unitOfWork.Patients.GetById(id);
@@ -42,14 +41,14 @@ namespace ClinicManagementSystem.Controllers
             return View(patient);
         }
 
-        // GET: Patient/Create
+        [Authorize(Roles = "Doctor,Admin,Patient")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Patient/Create
+        [Authorize(Roles = "Doctor,Admin,Patient")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PatientDTO patientDto)
@@ -98,8 +97,8 @@ namespace ClinicManagementSystem.Controllers
             LogModelErrors();
             return View(patientDto);
         }
+        [Authorize(Roles = "Doctor,Admin,Patient")]
 
-        // GET: Patient/Edit/5
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -126,7 +125,7 @@ namespace ClinicManagementSystem.Controllers
             return View(patientDto);
         }
 
-        // POST: Patient/Edit/5
+        [Authorize(Roles = "Doctor,Admin,Patient")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, PatientDTO patientDto)
@@ -193,7 +192,7 @@ namespace ClinicManagementSystem.Controllers
             return View(patientDto);
         }
 
-        // GET: Patient/Delete/5
+        [Authorize(Roles = "Doctor,Admin")]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -206,7 +205,7 @@ namespace ClinicManagementSystem.Controllers
             return View(patient);
         }
 
-        // POST: Patient/Delete/5
+        [Authorize(Roles = "Doctor,Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

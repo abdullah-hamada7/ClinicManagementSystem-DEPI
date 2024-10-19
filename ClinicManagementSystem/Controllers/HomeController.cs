@@ -22,6 +22,22 @@ namespace ClinicManagementSystem.Controllers
         {
             return View();
         }
+        public IActionResult DoctorProfile()
+        {
+            return View();
+        } 
+        public IActionResult aboutus()
+        {
+            return View();
+        }  
+        public IActionResult contactus()
+        {
+            return View();
+        }   
+        public IActionResult profile()
+        {
+            return View();
+        }
 
 
         public IActionResult SendEmail()
