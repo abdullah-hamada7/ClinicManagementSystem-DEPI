@@ -11,6 +11,6 @@
             public string LicenseNumber { get; set; }
             public DateTime HireDate { get; set; }
             public int DepartmentID { get; set; }
-            public IFormFile ImageFile { get; set; }
-        }
+
+    }
 }

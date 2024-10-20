@@ -5,8 +5,11 @@ namespace ClinicManagementSystem.Models
     public class MedicalRecord
     {
         public int ID { get; set; }
+        [Display(Name ="Patient")]
         public int PatientID { get; set; }
         public Patient Patient { get; set; }
+        [Display(Name = "Doctor")]
+
         public int DoctorID { get; set; }
         public Doctor Doctor { get; set; }
 

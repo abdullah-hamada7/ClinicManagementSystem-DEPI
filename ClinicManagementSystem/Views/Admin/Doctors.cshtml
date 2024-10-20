@@ -12,7 +12,6 @@
         @foreach (var doctor in Model)
         {
             <div class="doctor-card">
-                <img src="data:image/jpeg;base64,@Convert.ToBase64String(doctor.ImageData)" alt="Doctor Profile Picture" class="profile-picture" />                <div class="card-content">
                     <h3>@doctor.FirstName @doctor.LastName</h3>
                     <p><strong>Specialization:</strong> @doctor.Specialization</p>
                     <p><strong>ID:</strong> @doctor.DoctorID</p>
@@ -21,7 +20,6 @@
                         <a asp-action="Delete" asp-route-id="@doctor.DoctorID"  class="btn-action btn-delete">Delete</a>
                     </div>
                 </div>
-            </div>
         }
     </div>
 </section>
