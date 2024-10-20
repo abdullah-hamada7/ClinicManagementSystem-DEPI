@@ -1,132 +1,145 @@
-﻿using ClinicManagementSystem.DTOs;
-using ClinicManagementSystem.Models;
-using ClinicManagementSystem.UnitOfWork;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ClinicManagementSystem.Models;
 
 namespace ClinicManagementSystem.Controllers
 {
     public class MedicalRecordsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationDbContext _context;
 
-        public MedicalRecordsController(IUnitOfWork unitOfWork)
+        public MedicalRecordsController(ApplicationDbContext context)
         {
-            _unitOfWork = unitOfWork;
+            _context = context;
         }
 
+        // GET: MedicalRecords
         public async Task<IActionResult> Index()
         {
-            var medicalRecords = await _unitOfWork.MedicalRecords.GetAll();
-            return View(medicalRecords);
+            var applicationDbContext = _context.MedicalRecords.Include(m => m.Doctor).Include(m => m.Patient);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int id)
+        // GET: MedicalRecords/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            var medicalRecord = await _unitOfWork.MedicalRecords.GetById(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var medicalRecord = await _context.MedicalRecords
+                .Include(m => m.Doctor)
+                .Include(m => m.Patient)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (medicalRecord == null)
             {
-                return NotFound("The medical record you're looking for does not exist.");
+                return NotFound();
             }
+
             return View(medicalRecord);
         }
 
+        // GET: MedicalRecords/Create
         public IActionResult Create()
         {
+            // Make sure you fetch the list of doctors and patients properly
+            var doctors = _context.Doctors.ToList();
+            var patients = _context.Patients.ToList();
+
+            // Use "FullName" instead of "FirstName" if you want to display the full name, or another appropriate property
+            ViewData["DoctorID"] = new SelectList(doctors, "DoctorID", "FirstName");
+            ViewData["PatientID"] = new SelectList(patients, "PatientID", "FirstName");
+
             return View();
         }
 
+        // POST: MedicalRecords/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MedicalRecordDTO medicalRecordDto)
+        public async Task<IActionResult> Create([Bind("ID,PatientID,DoctorID,VisitDate,Diagnosis,Prescription,Notes,Height,Weight,BloodPressure,Temperature")] MedicalRecord medicalRecord)
         {
-            if (ModelState.IsValid)
+            // Re-populate the select lists if the ModelState is invalid
+            if (!ModelState.IsValid)
             {
-                var medicalRecord = new MedicalRecord
-                {
-                    PatientID = medicalRecordDto.PatientID,
-                    DoctorID = medicalRecordDto.DoctorID,
-                    VisitDate = medicalRecordDto.VisitDate,
-                    Diagnosis = medicalRecordDto.Diagnosis,
-                    Prescription = medicalRecordDto.Prescription,
-                    Notes = medicalRecordDto.Notes,
-                    Height = medicalRecordDto.Height,
-                    Weight = medicalRecordDto.Weight,
-                    BloodPressure = medicalRecordDto.BloodPressure,
-                    Temperature = medicalRecordDto.Temperature
-                };
+                var doctors = _context.Doctors.ToList();
+                var patients = _context.Patients.ToList();
 
-                await _unitOfWork.MedicalRecords.Add(medicalRecord);
-                TempData["SuccessMessage"] = "Medical record created successfully!";
+                ViewData["DoctorID"] = new SelectList(doctors, "DoctorID", "FirstName", medicalRecord.DoctorID);
+                ViewData["PatientID"] = new SelectList(patients, "PatientID", "FirstName", medicalRecord.PatientID);
+                return View(medicalRecord);
+            }
+
+            // Add the medical record to the context and save changes if the model state is valid
+            try
+            {
+                _context.Add(medicalRecord);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(medicalRecordDto);
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                ModelState.AddModelError(string.Empty, "An error occurred while saving the medical record. Please try again.");
+
+                var doctors = _context.Doctors.ToList();
+                var patients = _context.Patients.ToList();
+
+                // Ensure that the select lists are repopulated if there's an exception
+                ViewData["DoctorID"] = new SelectList(doctors, "DoctorID", "FirstName", medicalRecord.DoctorID);
+                ViewData["PatientID"] = new SelectList(patients, "PatientID", "FirstName", medicalRecord.PatientID);
+                return View(medicalRecord);
+            }
         }
 
-        public async Task<IActionResult> Edit(int RecordID)
+
+        // GET: MedicalRecords/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            var medicalRecord = await _unitOfWork.MedicalRecords.GetById(RecordID);
-            if (medicalRecord == null)
+            if (id == null)
             {
-                return NotFound("The medical record you're trying to edit does not exist.");
+                return NotFound();
             }
 
-            var medicalRecordDto = new MedicalRecordDTO
+            var medicalRecord = await _context.MedicalRecords.FindAsync(id);
+            if (medicalRecord == null)
             {
-                RecordID = medicalRecord.ID,
-                PatientID = medicalRecord.PatientID,
-                DoctorID = medicalRecord.DoctorID,
-                VisitDate = medicalRecord.VisitDate,
-                Diagnosis = medicalRecord.Diagnosis,
-                Prescription = medicalRecord.Prescription,
-                Notes = medicalRecord.Notes,
-                Height = medicalRecord.Height,
-                Weight = medicalRecord.Weight,
-                BloodPressure = medicalRecord.BloodPressure,
-                Temperature = medicalRecord.Temperature
-            };
-
-            return View(medicalRecordDto);
+                return NotFound();
+            }
+            ViewData["DoctorID"] = new SelectList(_context.Doctors, "DoctorID", "FirstName", medicalRecord.DoctorID);
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "FirstName", medicalRecord.PatientID);
+            return View(medicalRecord);
         }
 
+        // POST: MedicalRecords/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, MedicalRecordDTO medicalRecordDto)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,PatientID,DoctorID,VisitDate,Diagnosis,Prescription,Notes,Height,Weight,BloodPressure,Temperature")] MedicalRecord medicalRecord)
         {
-            if (id != medicalRecordDto.RecordID)
+            if (id != medicalRecord.ID)
             {
-                return NotFound("Record ID mismatch.");
+                return NotFound();
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var medicalRecord = await _unitOfWork.MedicalRecords.GetById(id);
-                    if (medicalRecord == null)
-                    {
-                        return NotFound("The medical record you're trying to update does not exist.");
-                    }
-
-                    medicalRecord.PatientID = medicalRecordDto.PatientID;
-                    medicalRecord.DoctorID = medicalRecordDto.DoctorID;
-                    medicalRecord.VisitDate = medicalRecordDto.VisitDate;
-                    medicalRecord.Diagnosis = medicalRecordDto.Diagnosis;
-                    medicalRecord.Prescription = medicalRecordDto.Prescription;
-                    medicalRecord.Notes = medicalRecordDto.Notes;
-                    medicalRecord.Height = medicalRecordDto.Height;
-                    medicalRecord.Weight = medicalRecordDto.Weight;
-                    medicalRecord.BloodPressure = medicalRecordDto.BloodPressure;
-                    medicalRecord.Temperature = medicalRecordDto.Temperature;
-
-                    await _unitOfWork.MedicalRecords.Update(medicalRecord);
-                    TempData["SuccessMessage"] = "Medical record updated successfully!";
+                    _context.Update(medicalRecord);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await MedicalRecordExists(medicalRecordDto.RecordID))
+                    if (!MedicalRecordExists(medicalRecord.ID))
                     {
-                        return NotFound("The medical record no longer exists.");
+                        return NotFound();
                     }
                     else
                     {
@@ -135,49 +148,49 @@ namespace ClinicManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(medicalRecordDto);
-        }
-
-        public async Task<IActionResult> Delete(int id)
-        {
-            var medicalRecord = await _unitOfWork.MedicalRecords.GetById(id);
-            if (medicalRecord == null)
-            {
-                return NotFound("The medical record you're trying to Delete does not exist.");
-            }
-
-            ViewBag.ConfirmationMessage = "Are you sure you want to Delete this medical record?";
+            ViewData["DoctorID"] = new SelectList(_context.Doctors, "DoctorID", "FirstName", medicalRecord.DoctorID);
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "FirstName", medicalRecord.PatientID);
             return View(medicalRecord);
         }
 
+        // GET: MedicalRecords/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var medicalRecord = await _context.MedicalRecords
+                .Include(m => m.Doctor)
+                .Include(m => m.Patient)
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (medicalRecord == null)
+            {
+                return NotFound();
+            }
+
+            return View(medicalRecord);
+        }
+
+        // POST: MedicalRecords/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var medicalRecord = await _unitOfWork.MedicalRecords.GetById(id);
-            if (medicalRecord == null)
+            var medicalRecord = await _context.MedicalRecords.FindAsync(id);
+            if (medicalRecord != null)
             {
-                return NotFound("The medical record you're trying to Delete no longer exists.");
+                _context.MedicalRecords.Remove(medicalRecord);
             }
 
-            try
-            {
-                await _unitOfWork.MedicalRecords.Delete(id);
-                TempData["SuccessMessage"] = $"Medical record for patient ID {medicalRecord.PatientID} Deleted successfully!";
-            }
-            catch (Exception)
-            {
-                TempData["ErrorMessage"] = "An error occurred while trying to Delete the medical record. Please try again.";
-                return RedirectToAction(nameof(Index));
-            }
-
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<bool> MedicalRecordExists(int id)
+        private bool MedicalRecordExists(int id)
         {
-            var medicalRecord = await _unitOfWork.MedicalRecords.GetById(id);
-            return medicalRecord != null;
+            return _context.MedicalRecords.Any(e => e.ID == id);
         }
     }
 }

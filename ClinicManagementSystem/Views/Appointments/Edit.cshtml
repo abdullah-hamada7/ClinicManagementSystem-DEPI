@@ -1,7 +1,12 @@
 ﻿@model ClinicManagementSystem.DTOs.AppointmentDTO
 
 @{
+
     ViewData["Title"] = "Edit Appointment";
+
+
+    var x = new SelectList(ViewBag.PatientID, "PatientID", "FirstName", Model.PatientID);
+    var y = new SelectList(ViewBag.DoctorID, "DoctorID", "FirstName", Model.DoctorID);
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -14,13 +19,13 @@
 
     <div class="form-group">
         <label asp-for="PatientID" class="control-label"></label>
-        <select asp-for="PatientID" class="form-control" asp-items="@(new SelectList(ViewBag.Patients, "PatientID", "FullName", Model.PatientID))"></select>
+        <select asp-for="PatientID" class="form-control" asp-items="@x"></select>
         <span asp-validation-for="PatientID" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DoctorID" class="control-label"></label>
-        <select asp-for="DoctorID" class="form-control" asp-items="@(new SelectList(ViewBag.Doctors, "DoctorID", "FullName", Model.DoctorID))"></select>
+        <select asp-for="DoctorID" class="form-control" asp-items="@y"></select>
         <span asp-validation-for="DoctorID" class="text-danger"></span>
     </div>
 

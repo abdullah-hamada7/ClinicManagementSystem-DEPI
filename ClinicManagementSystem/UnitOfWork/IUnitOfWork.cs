@@ -1,10 +1,9 @@
 ﻿using ClinicManagementSystem.Models;
 using ClinicManagementSystem.Repositories;
-using System.Numerics;
 
 namespace ClinicManagementSystem.UnitOfWork
 {
-    public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<Patient> Patients { get; }
         IRepository<Doctor> Doctors { get; }
@@ -14,9 +13,11 @@ namespace ClinicManagementSystem.UnitOfWork
         IRepository<Prescription> Prescriptions { get; }
         IRepository<Department> Departments { get; }
         Task Complete();
-            Task<int> GetDoctorsCountAsync();
-            Task<int> GetPatientsCountAsync();
-            Task<int> GetAppointmentsCountAsync();
+        Task<int> GetDoctorsCountAsync();
+        Task<int> GetPatientsCountAsync();
+        Task<int> GetAppointmentsCountAsync();
+        Task<IEnumerable<Appointment>> GetAppointmentsWithDetails();
+        Task<Appointment> GetAppointmentsWithDetailsByID(int id);
 
     }
 }

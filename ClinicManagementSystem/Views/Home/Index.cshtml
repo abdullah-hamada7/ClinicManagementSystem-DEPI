@@ -1,7 +1,44 @@
 ﻿<form method="post" action="/Home/CreateCheckoutSession">
-    <!-- Form fields -->
+
+    <div class="amount-container">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" value="" />
+    </div>
 
 
+    <style>
+        .amount-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.amount-container label {
+    font-size: 16px;
+    margin-bottom: 8px; 
+    color: #333; 
+}
+
+.amount-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    width: 100%; 
+    max-width: 300px; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+    transition: border-color 0.3s;
+}
+
+.amount-container input[type="text"]:focus {
+    border-color: #007bff; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+</style>
+
+    <button type="submit">Checkout</button>
 
     <section class="hero">
         <div class="hero-content">
@@ -101,3 +138,4 @@
         </div>
     </section>
 </form>
+

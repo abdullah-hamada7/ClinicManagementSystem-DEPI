@@ -1,7 +1,6 @@
 ﻿using ClinicManagementSystem.Models;
 using ClinicManagementSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Numerics;
 
 namespace ClinicManagementSystem.UnitOfWork
 {
@@ -50,6 +49,16 @@ namespace ClinicManagementSystem.UnitOfWork
         public async Task<int> GetAppointmentsCountAsync()
         {
             return await _context.Set<Appointment>().CountAsync();
+        }
+
+        public async Task<IEnumerable<Appointment>> GetAppointmentsWithDetails()
+        {
+            return await _context.Appointments.Include(a => a.Patient).Include(p => p.Doctor).ToListAsync();
+        }
+
+        public async Task<Appointment> GetAppointmentsWithDetailsByID(int id)
+        {
+            return await _context.Appointments.Include(a => a.Patient).Include(p => p.Doctor).FirstOrDefaultAsync(a => a.AppointmentID == id);
         }
     }
 }

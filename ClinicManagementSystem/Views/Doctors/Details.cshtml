@@ -1,9 +1,10 @@
 ﻿@model ClinicManagementSystem.Models.Doctor
 
 @{
-    ViewData["Title"] = "Doctor Details";
-    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 
+    ViewData["Title"] = "Doctor Details";
+
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
 
 <h1>Doctor Details</h1>
@@ -33,13 +34,6 @@
         <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HireDate)</dt>
         <dd class="col-sm-9">@Html.DisplayFor(model => model.HireDate)</dd>
 
-        @if (Model.ImageData != null)
-        {
-            <dt class="col-sm-3">Profile Image</dt>
-            <dd class="col-sm-9">
-                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ImageData)" alt="Doctor Image" style="max-width: 200px;" />
-            </dd>
-        }
     </dl>
 </div>
 <div>

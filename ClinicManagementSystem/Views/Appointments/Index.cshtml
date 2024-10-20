@@ -6,12 +6,7 @@
              "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <label for="name">Amount:</label>
-    <input type="text" id="amount" name="amount" value="" />
-</div>
 
-<button type="submit">Checkout</button>
 
 <section class="appointments-section">
     <h2>Manage Appointments</h2>
@@ -35,8 +30,8 @@
                 {
                     <tr>
                         <td>@appointment.AppointmentID</td>
-                        <td>@appointment.PatientID</td>
-                        <td>@appointment.DoctorID</td>
+                        <td>@(appointment.Patient.FirstName + " " + appointment.Patient.FirstName)  </td>
+                        <td>@(appointment.Doctor .FirstName + " " + appointment.Doctor.FirstName)</td>
                         <td>@appointment.AppointmentDate.ToString("MMMM dd, yyyy h:mm tt")</td>
                         <td>@appointment.Reason</td>
                         <td>
