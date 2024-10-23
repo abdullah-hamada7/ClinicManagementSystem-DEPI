@@ -1,6 +1,8 @@
-﻿using ClinicManagementSystem.Models;
+﻿using ClinicManagementSystem.Areas.Identity.Pages.Account;
+using ClinicManagementSystem.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using static ClinicManagementSystem.Areas.Identity.Pages.Account.LoginModel;
 
 namespace ClinicManagementSystem.Controllers
 {
@@ -58,6 +60,36 @@ namespace ClinicManagementSystem.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(InputModel model, string returnUrl = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+
+                    if (await _userManager.IsInRoleAsync(user, "Doctor"))
+                    {
+                        return RedirectToAction("Dashboard", "Doctors");
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
 
             return View(model);

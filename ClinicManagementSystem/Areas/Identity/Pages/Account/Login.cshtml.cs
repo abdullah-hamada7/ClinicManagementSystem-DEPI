@@ -21,11 +21,13 @@ namespace ClinicManagementSystem.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -113,11 +115,27 @@ namespace ClinicManagementSystem.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var user = await _userManager.FindByEmailAsync(Input.Email);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    //_logger.LogInformation("User logged in.");
+                    //return LocalRedirect(returnUrl);
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        // Redirect to the Admin Panel
+                        return LocalRedirect(Url.Content("~/Admin/Index"));
+                    }
+
+                    // Check if the user is a Doctor
+                    if (await _userManager.IsInRoleAsync(user, "Doctor"))
+                    {
+                        // Redirect to the Doctor Panel
+                        return LocalRedirect(Url.Content("~/Doctors/Dashboard"));
+                    }
+
+                    // Default redirection if no role matches
                     return LocalRedirect(returnUrl);
-                }
+            }
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });

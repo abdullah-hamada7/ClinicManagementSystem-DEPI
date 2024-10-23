@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,7 +30,37 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            @if (User.Identity.IsAuthenticated)
+
+                            {
+
+                                var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+
+                                if (user != null && await UserManager.IsInRoleAsync(user, "Admin"))
+
+                                {
+                                    <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                                }
+
+                                else if (user != null && await UserManager.IsInRoleAsync(user, "Doctor"))
+
+                                {
+                                    <a class="nav-link" asp-controller="Doctors" asp-action="Dashboard">Doctor Panel</a>
+                                }
+
+                                else
+
+                                {
+                                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                                }
+
+                            }
+
+                            else
+
+                            {
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            }
                         </li>
                         <!-- Add more navigation links as needed -->
                     </ul>
