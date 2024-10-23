@@ -2,9 +2,12 @@
 @{
 
     ViewData["Title"] = "Create Appointment";
-    Layout = User.IsInRole("Admin") ? "~/Views/Shared/_AdminLayout.cshtml" :
-             User.IsInRole("Doctor") || User.IsInRole("Patient") ? "~/Views/Shared/_Layout.cshtml" :
-             "~/Views/Shared/_Layout.cshtml";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+
 
 
 

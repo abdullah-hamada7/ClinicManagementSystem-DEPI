@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ClinicManagementSystem.Models.Appointment>
 
 @{
-    ViewData["Title"] = "Appointments Management";
-    Layout = User.IsInRole("Admin") ? "~/Views/Shared/_AdminLayout.cshtml" :
-             "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 

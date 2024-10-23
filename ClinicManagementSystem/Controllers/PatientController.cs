@@ -94,7 +94,6 @@ namespace ClinicManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            LogModelErrors();
             return View(patientDto);
         }
         [Authorize(Roles = "Doctor,Admin,Patient")]
